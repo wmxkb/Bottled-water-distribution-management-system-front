@@ -1,0 +1,172 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+/* 地点选择标签样式 */
+#sl{
+	/* 位置 */
+	position: fixed;
+	top: 0px;
+	left: 10px;
+	
+	width: 25%;
+	
+	/* 边框样式 */
+	border: none;
+	/* 聚焦时边框颜色 */
+	outline: none;
+	/* 背景颜色 */
+	background-color: white;
+	/* 字体颜色 */
+	color: black;
+	/* 文字大小 */
+	font-size: 20px;
+	appearance: none;
+	/* 隐藏下拉图标 */
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	/* 显示箭头图片 */
+	background: url("../img/triangle.png");
+	/* 背景图片位置 */
+	background-position: 95% 50%;
+	/* 是否重复填充 */
+	background-repeat: no-repeat;
+	/* 背景图片尺寸 */
+	background-size: 6px 6px;
+	/* 背景图的绘制区域 */
+	/* padding-box 内边距框 */
+	background-clip:padding-box;
+	/* 为箭头留出位置 */
+	padding-right: 24px;
+} 
+
+/* 解决IOS(苹果)系统手机上触发点击事件会有高亮的阴影 */
+*{  -webkit-tap-highlight-color: rgba(0,0,0,0); -webkit-tap-highlight-color: transparent;  }
+
+/* 购物车图标样式 */
+#shopping_trolley{
+	/* 图片尺寸 */
+	height: 27px;
+	width: 27px;
+	/* 位置 */
+	position: fixed;
+	top: 0px;
+	left: calc(100% - 55px);
+	
+}
+
+
+
+.selectfont{
+	font-weight: 400;
+	/* color: #fd8008; */
+	font-family: "宋体";
+	
+	
+}
+
+.swiper {
+	
+    width: 100%;
+    height: 500px;
+	/* background-color: #ffff0a; */
+	
+	position: absolute;
+	bottom: 10px;
+	/* top: 200px; */
+}  
+
+
+.floorGoods{
+	background-color: white;
+	border-radius: 5px;
+	float: left;
+	
+	width: 33.33%;
+	height: 180px;
+	
+	border-style:solid;
+	border-width: 1px;
+	border-color: #F5F5F5;
+	/* margin:0 1%; */
+	
+	position: relative;
+}
+.floorGoods img{
+	margin-top: 10%;
+	/* margin-left 和width配合调整比例 */
+	margin-left: 5%;
+	width: 90%;
+	height: 90px;
+	
+	/* 禁止图片被选中 */
+	pointer-events: none;
+	/* 禁止文字被选择 */
+	-moz-user-select:none;
+	-webkit-user-select:none;
+	user-select:none; 
+	
+}
+
+
+.floorGoods .waterType{
+	font-size: 17px;
+	font-weight: 300;
+	margin-left: 10px;
+	
+}
+
+.floorGoods .addIcon{
+	width: 100%;
+	height: 100%;
+	/* position: absolute;
+	left: calc(70%);
+	bottom: 8px; */
+}
+.floorGoods .dmg{
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	left: calc(75%);
+	bottom: 20px;
+}
+
+
+
+.floorGoods .price{
+	font-size: 18px;
+	font-weight: 300;
+	color: #ed0000;
+	
+	margin-left: 10px;
+	
+}
+
+.restCount{
+	color: #8a8a8a;
+	font-size: 15px;
+	
+	margin-left: 10px;
+	
+	/* text-align: center; */
+	-moz-user-select:none;
+	-webkit-user-select:none;
+	user-select:none; 
+}
+
+.floorName{
+	margin-bottom: 0;
+	
+	/* background-color: #ffffff; */
+	text-align: center; 
+	height: 90px; 
+	line-height: 90px;
+	
+	font-size: 20px;
+	
+	/* 禁止文字被选择 */
+	-moz-user-select:none;
+	-webkit-user-select:none;
+	user-select:none; 
+} 

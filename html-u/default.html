@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- 导航页面 -->
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- ,viewport-fit=cover -->
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../css/mui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../css/index.css" />
+		<script src="../js/mine.js"></script>
+		<script src="../js/default.js"></script>
+		<title></title>
+	</head>
+	<body class="bgc-white">
+		<!-- <style type="text/css">
+			.bottom{
+				/* IOS底部安全边距 */
+				height: calc(100rpx + env(safe-area-inset-bottom));
+				padding-bottom: env(safe-area-inset-bottom);
+			}
+		</style> -->
+		
+		<!-- 标题 -->
+		<!-- mui-bar-nav 暂时不需要阴影-->
+		<header id="headerTxt" class="mui-bar mui-bar-nav" style="background-color: white; box-shadow: 0 0 0 0 rgba(0,0,0,0);">
+			
+			<h1 class="mui-title">首页</h1>
+			
+		</header>
+		
+		<!-- 遮挡导航栏，用于控制点击速度 -->
+		<div id='disTap' style="width: 100%; height: 50px; position: absolute; bottom: 0px;"></div>
+		
+		<!-- 导航栏 -->
+		<nav class="mui-bar mui-bar-tab" >
+			<a id="home" class="mui-tab-item">
+				<span class="mui-icon iconfont icon-shouye"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a id="func" class="mui-tab-item">
+				<span class="mui-icon iconfont icon-gouwuche"></span>
+				<span class="mui-tab-label">购物车</span>
+			</a>
+			<a id="order" class="mui-tab-item">
+				<span class="mui-icon iconfont icon-dingdan"></span>
+				<span class="mui-tab-label">订单</span>
+			</a>
+			<a id="my" class="mui-tab-item">
+				<span class="mui-icon iconfont icon-31wode"></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+	</body>
+</html>

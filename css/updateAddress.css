@@ -1,0 +1,14 @@
+*{
+	padding: 0 ;
+	margin: 0;
+}
+
+
+.mui-icon-left-nav{
+	color: #000000;
+}
+
+.content{
+	-webkit-overflow-scrolling: touch;
+	background-color: #ffffff;
+}

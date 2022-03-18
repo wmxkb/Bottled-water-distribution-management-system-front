@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		
+		<link rel="stylesheet" type="text/css" href="../css/mui.css"/>
+		
+		<link rel="stylesheet" type="text/css" href="../css/mui.picker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/mui.poppicker.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/updateAddress.css"/>
+		
+		<script src="../js/mui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/mui.picker.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/city.data.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/mui.poppicker.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+	</head>
+	<body class="content">
+		
+			<!-- 标题 -->
+			<!-- mui-bar-nav 暂时不需要阴影-->
+			<header class="mui-bar " style="background-color: white; box-shadow: 0 0 0 0 rgba(0,0,0,0);"> 
+				<a id = 'back' class="mui-icon mui-icon-left-nav mui-pull-left mui-action-back"></a>
+				<h1 class="mui-title">修改地址</h1>
+			</header>
+			
+			<ul class="mui-table-view" style="width: 100%; position: absolute; top: 44px;">
+					<li class="mui-table-view-cell ">
+						
+						<div class="" style="display: inline-block; ">
+							<a class="mui-navigate-right" style="">
+							</a>
+							收货人
+						</div>
+						<!-- <div style="display: inline-block; margin-left: 20px;">
+							wmxkb
+						</div> -->
+						<input type="text" id="" value="wmxkb" style="padding: 0; margin-bottom: 0px; border: none;  width: 60%; height: 20px;  display: inline-block; position: absolute; left: 80px; "   />
+						
+					</li>
+					<li class="mui-table-view-cell ">
+						
+						<div class="" style="display: inline-block; ">
+							<a class="mui-navigate-right" style="">
+							</a>
+							电话
+						</div>
+						<!-- <div style="display: inline-block; margin-left: 20px;">
+							wmxkb
+						</div> -->
+						<input type="text" id="" value="wmxkb" style="padding: 0; margin-bottom: 0px; border: none;  width: 60%; height: 20px;  display: inline-block; position: absolute; left: 80px;"   />
+						
+					</li>
+					
+					<li class="mui-table-view-cell ">
+						
+						<div class="" style="display: inline-block; ">
+							<a class="mui-navigate-right" style="">
+							</a>
+							省
+						</div>
+						<!-- <div style="display: inline-block; margin-left: 20px;">
+							wmxkb
+						</div> -->
+						<div id="selectProvince"  style="line-height: 43px; padding: 0px; width: 79%; height: 43px;  display: inline-block; position: absolute; left: 21%; top: 0px;"></div>
+						
+					</li>
+					
+					<li class="mui-table-view-cell ">
+						
+						<div class="" style="display: inline-block; ">
+							<a class="mui-navigate-right" style="">
+							</a>
+							市
+						</div>
+						<!-- <div style="display: inline-block; margin-left: 20px;">
+							wmxkb
+						</div> -->
+						<div id="selectCity"  style="line-height: 43px; padding: 0px; width: 79%; height: 43px;  display: inline-block; position: absolute; left: 21%; top: 0px;"></div>
+						
+					</li>
+					<li class="mui-table-view-cell ">
+						
+						<div class="" style="display: inline-block; ">
+							<a class="mui-navigate-right" style="">
+							</a>
+							区
+						</div>
+						<!-- <div style="display: inline-block; margin-left: 20px;">
+							wmxkb
+						</div> -->
+						<div id="selectDistrict"  style="line-height: 43px; padding: 0px; width: 79%; height: 43px;  display: inline-block; position: absolute; left: 21%; top: 0px;"></div>
+						
+					</li>
+					
+					<li class="mui-table-view-cell ">
+						
+						<div class="" style="display: inline-block; ">
+							<a class="mui-navigate-right" style="">
+							</a>
+							地址
+						</div>
+						<!-- <div style="display: inline-block; margin-left: 20px;">
+							wmxkb
+						</div> -->
+						<input type="text" id="" value="wmxkb" style="padding: 0; margin-bottom: 0px; border: none;  width: 60%; height: 20px;  display: inline-block; position: absolute; left: 80px;"   />
+						
+					</li>
+					<li class="mui-table-view-cell ">
+						
+						<div class="" style="display: inline-block; ">
+							<a class="mui-navigate-right" style="">
+							</a>
+							xxx
+						</div>
+						<!-- <div style="display: inline-block; margin-left: 20px;">
+							wmxkb
+						</div> -->
+						<input type="text" id="" value="wmxkb" style="padding: 0; margin-bottom: 0px; border: none;  width: 60%; height: 20px;  display: inline-block; position: absolute; left: 80px;"   />
+						
+					</li>
+				</ul>
+				
+				<script>
+					let selectProvince = document.getElementById('selectProvince');
+					selectProvince.addEventListener('tap', function(){
+						var picker = new mui.PopPicker({
+							layer: 1
+						});
+						
+						picker.setData(cityData3);
+						// picker.pickers[0].setSelectedIndex(1);
+						// picker.pickers[0].setSelectedIndex(1);
+						
+						picker.show(function(selectedItem) {
+							selectProvince.innerHTML = selectedItem[0].text;
+						})
+						
+					},false);
+					// picker.setData(cityData3[7].children[2].children)
+					
+					let selectCity = document.getElementById('selectCity');
+					selectCity.addEventListener('tap', function(){
+						let province = selectProvince.innerHTML;
+						let indexP = 0;
+						for(let i = 0; i < cityData3.length; i++){
+							if(cityData3[i].text == province){
+								indexP = i;
+								break;
+							}
+						}
+						
+						var picker = new mui.PopPicker({
+							layer: 1
+						});
+						
+						picker.setData(cityData3[indexP].children);
+						// picker.pickers[0].setSelectedIndex(1);
+						// picker.pickers[0].setSelectedIndex(1);
+						
+						picker.show(function(SelectedItem) {
+							selectCity.innerHTML = SelectedItem[0].text
+						})
+						
+					},false);
+					
+					let selectDistrict = document.getElementById('selectDistrict');
+					selectDistrict.addEventListener('tap', function(){
+						let province = selectProvince.innerHTML;
+						let indexP = 0;
+						for(let i = 0; i < cityData3.length; i++){
+							if(cityData3[i].text == province){
+								indexP = i;
+								break;
+							}
+						}
+						
+						let City = selectCity.innerHTML;
+						let indexC = 0;
+						for(let i = 0; i < cityData3.length; i++){
+							if(cityData3[i].text == City){
+								indexC = i;
+								break;
+							}
+						}
+						
+						var picker = new mui.PopPicker({
+							layer: 1
+						});
+						
+						picker.setData(cityData3[indexP].children[indexC].children);
+						// picker.pickers[0].setSelectedIndex(1);
+						// picker.pickers[0].setSelectedIndex(1);
+						
+						picker.show(function(SelectedItem) {
+							selectDistrict.innerHTML = SelectedItem[0].text
+						})
+						
+					},false);
+				</script>
+			
+			
+		</div>
+	</body>
+</html>

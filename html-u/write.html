@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<script src="js/mui.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			// mui插件初始化
+		  	mui.init(); 
+			// 要使用HTML5+扩展api，必须等plusready事件发生后才能正常使用
+			mui.plusReady(function() {
+				mui.alert("233");
+				// 获取登录按钮所在div
+				var userform = document.getElementById("userform");
+				//监听登录botton的submit事件 
+				userform.addEventListener("tap", function(e){
+					// 用户键入的账号密码信息
+					var username = document.getElementById("username").value;
+					var password = document.getElementById("password").value;
+					// push入useinfos列表
+					// var userinfos = [];
+					// userinfos.push(username);
+					// userinfos.push(password);
+					
+					// 目标url
+					var url = "http://192.168.0.102:8080" + "/write";
+					// 发起 ajax请求
+					mui.ajax(url,{
+						// 传递的数据
+						data:{
+							"date":username,
+							"value":password,
+						},
+						dataType:'list',//服务器返回text格式数据
+						type:'post',//HTTP请求类型
+						async:false,// 异步 or 同步
+						timeout:10000,//超时时间设置为10秒；
+						// headers:{'Content-Type':'application/json'},	暂时没管这是啥东西           
+						success:function(data){
+							//服务器返回响应，根据响应结果，分析是否登录成功；
+							// console.log(data);
+							// alert(data);
+							if(data == 1)
+								alert("写入失败");
+								// document.location("write.html");
+								// if(view != null)
+								// view.show();
+								// mui.back();
+							else
+								alert(data);
+							
+						},
+						error:function(xhr,type,errorThrown){
+							//异常处理；
+							console.log(type);
+						}
+					});
+				})
+			})
+		</script>
+	</head>
+
+	<body class="bgc-white">
+		<!-- 标题 -->
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left col-g"></a>
+			<h1 class="mui-title">登录</h1>
+		</header>
+		
+		<!-- 主体部分 -->
+		<div class="mui-content bgc-white">
+			<form class="mui-input-group log public-padding public-before-none">
+			    <!-- 账户密码 -->
+				<div class="mui-input-row">
+			        <label>用户名</label>
+			    <input id='username' type="text" class="mui-input-clear" placeholder="请输入用户名">
+			    </div>
+				
+			    <div class="mui-input-row public-top">
+			        <label>密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
+			        <input id='password' type="password" class="mui-input-password" placeholder="请输入密码">
+			    </div>
+			</form>
+			
+			
+			<form class="public-top">
+				<div class="mui-input-row mui-radio mui-left div-inblock">
+					<label>学生</label>
+					<input name="radio" checked='checked' type="radio">
+				</div>
+				<div class="mui-input-row mui-radio mui-left div-inblock">
+					<label>商家</label>
+					<input name="radio" type="radio">
+				</div>
+				<div class="mui-input-row mui-radio mui-left div-inblock">
+					<label>管理员</label>
+					<input name="radio" type="radio">
+				</div>
+			</form>
+			<!-- <form id="userform">
+				<button type="submit" id='login' class="mui-btn mui-btn-primary dlbtn public-top">登&nbsp;&nbsp;录</button>
+			</form> -->
+			
+			<div id="userform">
+				<button type="submit" id='login' class="mui-btn mui-btn-primary dlbtn public-top">登&nbsp;&nbsp;录</button>
+			</div>
+			
+		</div>
+		
+	</body>
+
+</html>

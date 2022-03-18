@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!-- 登录页面 -->
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- <meta name="apple-mobile-web-app-capable" content="yes"> -->
+		<!-- <meta name="apple-mobile-web-app-status-bar-style" content="black"> -->
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!-- index.css -->
+		<link rel="stylesheet" type="text/css" href="css/mui.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<!-- tap\ajax\以及其它 -->
+		<script src="./js/mine.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/index.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+	</head>
+	<body class="bgc-white">
+		<!-- 标题 -->
+		<header class="mui-bar mui-bar-nav">
+			<!-- <a id = 'register' class="mui-icon mui-icon-left-nav mui-pull-left back-action"></a> -->
+			<h1 class="mui-title">登录</h1>
+		</header>+
+		
+		<!-- 主体部分 -->
+		<div class="mui-content bgc-white">
+			<form class="mui-input-group log public-padding public-before-none">
+			    <!-- 账户密码 -->
+				<div class="mui-input-row">
+			        <label>用户名</label>
+			    <input id='username' type="text" class="mui-input-clear" placeholder="请输入用户名">
+			    </div>
+				
+			    <div class="mui-input-row public-top">
+			        <label>密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
+			        <input id='password' type="password" class="mui-input-password" placeholder="请输入密码">
+			    </div>
+			</form>
+			
+			
+			<form class="public-top">
+				<div class="mui-input-row mui-radio mui-left div-inblock">
+					<label>用户</label>
+					<input name="radio" checked='checked' type="radio" class="input_checked">
+				</div>
+				<div class="mui-input-row mui-radio mui-left div-inblock">
+					<label>管理</label>
+					<input name="radio" type="radio" class="input_checked">
+				</div>
+			</form>
+			<div id="loginbox">
+				<button id="login" type="button" class="mui-btn mui-btn-primary btn-fix public-top">登&nbsp;&nbsp;录</button>
+			</div>
+			<br />
+			<!-- 不会写，以后改 -->
+			<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a id="register">注册</a>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a>忘记密码</a>
+			</div>
+			<br />
+		</div>
+		
+		
+		
+	</body>
+</html>

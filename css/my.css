@@ -1,0 +1,317 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+
+html{
+	-webkit-text-size-adjust: 100%;
+}
+
+
+/* 退出登录div */
+#logout{
+	width: calc(100% - 40px);
+	height: 50px;
+	background-color: #dddddd;
+	color: #ffffff;
+	
+	position: absolute;
+	/* top:50px; */
+	left: 20px;
+	bottom: 10px;
+	
+	line-height: 50px;
+	/* padding:50%; */
+	text-align: center;
+	
+	border-radius:10px;
+	
+	-moz-user-select: none;
+	
+	-khtml-user-select: none;
+	
+	user-select: none;
+	
+}
+/* 确认退出div */
+#confirm{
+	top: 0px;
+	height: 72.5px;
+	background: #ffffff;
+	line-height: 72.5px;
+	
+	-moz-user-select: none;
+	
+	-khtml-user-select: none;
+	
+	user-select: none;
+}
+/* 中间深色样式 */
+#middleline{
+	top: 72.5px;
+	height: 5px;
+	background: #f3f3f3;
+}
+/* 取消退出div */
+#cancle{
+	top: 77.5px;
+	height: 72.5px;
+	background: #ffffff;
+	line-height: 72.5px;
+	/* z-index: ; */
+	
+	-moz-user-select: none;
+	
+	-khtml-user-select: none;
+	
+	user-select: none;
+}
+/* 屏蔽罩 */
+.mask{
+	visibility: hidden;
+	/* visibility: visible; */
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: rgba(0,0,0,0.4);
+	z-index: 19;
+}
+/* 显示 */
+.show{
+	display: ;
+}
+
+/* 弹窗窗体样式 */
+.message_alert{
+	width: calc(100% - 10px);
+	height: 150px;
+	position: absolute;
+	left: 5px;
+	display: none;
+	/* visibility: hidden; */
+	/* line-height: 150px; */
+	text-align: center;
+	
+	border-radius:15px;
+	background: #e0e0e0;
+	z-index: 20;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+/* 弹出动画效果 */
+.pop{
+	/* position: absolute; */
+	/* visibility: visible; */
+	display: block;
+	left: 5px;
+	animation: myfirst 0.2s;
+	-webkit-animation: myfirst 0.2s;
+	animation-fill-mode: forwards;/*当动画完成时，动画会停留在最后一帧。*/
+	overflow: hidden;
+	
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+}
+/* 关键帧 */
+@-webkit-keyframes myfirst /* Safari and Chrome */
+{
+	0%   {bottom: -150px;}
+	10%  {bottom: -135px;}
+	20%  {bottom: -120px;}
+	30%  {bottom: -105px;}
+	40%  {bottom: -90px;}
+	50%  {bottom: -75px;}
+	60%  {bottom: -60px;}
+	70%  {bottom: -45px;}
+	80%  {bottom: -30px;}
+	90%  {bottom: -15px;}
+	100% {bottom: 0px;}
+}
+
+.www{
+	position: fixed;
+	top: 200px;
+	left: 100px;
+	/* transform: translateZ(0); */
+}
+
+.content{
+	-webkit-overflow-scrolling: touch;
+	background-color: #ffffff;
+}
+
+/* 个人信息模块 */
+.myProfileBox{
+	background-color: #e9e9e9;
+	width: 90%;
+	height: 180px;
+	
+	position: absolute;
+	left: 5%;
+	
+	border-radius: 14px;
+}
+
+/* 个人信息part1 */
+.myProfilePart1{
+	/* background-color: #453bcd; */
+	width: 100%;
+	height: 90px;
+	
+	border-radius: 14px;
+	
+	position: relative;
+}
+
+.myProfilePicture{
+	width: 50px;
+	height: 50px;
+	
+	position: absolute;
+	top: 25px;
+	left: 25px;
+	
+}
+
+/* 头像 */
+.myProfilePicture img{
+	width: 60px;
+	height: 60px;
+}
+
+.myProfileName{
+	position: absolute;
+	top: 30px;
+	left: 90px;
+}
+
+.myProfilePhone{
+	/* background-color: #007AFF; */
+	position: absolute;
+	top: 55px;
+	left: 90px;
+}
+
+.myProfilePhone img{
+	float: left;
+}
+
+.myProfilePhone div{
+	float: left;
+	margin-left: 5px;
+	
+	font-size: 12px;
+}
+
+/* 个人信息part2 */
+.myProfilePart2{
+	/* background-color: #453bcd; */
+	width: 100%;
+	height: 90px;
+	
+	border-radius: 14px;
+	
+	position: relative;
+}
+
+.myProfilePart2 .p{
+	float: left;
+	/* border-left: 20px; */
+	width: 24%;
+	height: 100%;
+	/* line-height: 90px; */
+	text-align: center;
+	/* margin:0 5px */
+}
+
+
+.ticketCount{
+	width: 24%;
+	height: 20px;
+	position: absolute; 
+	top: 25px; 
+}
+
+.ticket{
+	width: 24%; 
+	height: 45px; 
+	position: absolute; 
+	top: 50px;  
+	color: #555555; 
+	font-size: 12px;
+}
+
+.myFunction{
+	position: absolute;
+	top: 220px;
+	left: 5%;
+	width: 90%;
+	
+	/* background-color: white; */
+	
+}
+
+.myFunction .myFunctionLi{
+	/* background-color: #007AFF; */
+	height: 50px;
+	width: 100%;
+}
+
+
+.mui-table-view::before{
+	height: 0px;
+}
+
+.mui-table-view::after{
+	height: 0px;
+}
+
+
+/* 使a标签覆盖整个li，高亮显示统一 */
+.mui-table-view-cell>a.aTextPosition{
+	position: absolute;
+	left: 0px;
+	width: 100%; 
+	padding-left: 11.5%;  
+	margin-left: 0px;
+}
+
+.mui-table-view-cell>a:not(.mui-btn).mui-active{  
+background-color: #eaeaea;  
+}
+
+
+.mui-table-view-cell::after{
+	height: 0px;
+}
+
+
+/* .cls{
+	padding-top: 0px;
+} */
+
+.mui-navigate-right::after{
+	float: none;
+	position: absolute;
+	
+	right: 0px;
+	
+	
+}
+
+.myFunctionFonts{
+	font-size: 25px; 
+	position: absolute; 
+	/* 使功能模块和信息模块看起来更分明 */
+	left: 5px;
+	
+	z-index: 10;
+}

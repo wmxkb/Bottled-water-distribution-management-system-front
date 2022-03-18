@@ -1,0 +1,23 @@
+.content{
+	-webkit-overflow-scrolling: touch;
+	background-color: #ffffff;
+}
+
+.mui-icon-left-nav{
+	color: #000000;
+}
+.addressBox{
+	width: 100%;
+	height: 80px;
+}
+
+.bianjiPosition{
+	margin-top: 10px;
+	font-size: 22px;
+}
+
+.ui-alert {
+                text-align: left;/*文本排列*/
+                padding: 15px 10px;/*外边距  两个值 代表 上下边距 和左右边距 四个值代表上 左 下 右   （顺时针）*/
+                font-size: 16px;/*字体大小*/
+            }

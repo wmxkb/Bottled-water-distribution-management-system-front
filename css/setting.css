@@ -1,0 +1,20 @@
+.content{
+	-webkit-overflow-scrolling: touch;
+	background-color: #ffffff;
+}
+
+.mui-table-view::before{
+	height: 0px;
+}
+
+.mui-table-view::after{
+	height: 0px;
+}
+
+.fixedLiHeight{
+	height: 50px;
+}
+
+.mui-icon-left-nav{
+	color: #000000;
+}
