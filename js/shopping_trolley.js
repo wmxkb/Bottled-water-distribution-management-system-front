@@ -24,7 +24,7 @@ document.addEventListener('plusready', function(e){
 			isSelect = true;
 			
 			let userid = plus.storage.getItem('userid');
-			let url = "http://192.168.1.115:8080" + "/selectAll";
+			let url = "http://192.168.1.101:8080" + "/selectAll";
 			ajax(
 				url, 
 				'POST',
@@ -142,7 +142,7 @@ document.addEventListener('plusready', function(e){
 	calculate.addEventListener('tap',function(e){
 		var allPrice;
 		let userid = plus.storage.getItem('userid');
-		let url = "http://192.168.1.115:8080" + "/selectAll";
+		let url = "http://192.168.1.101:8080" + "/selectAll";
 		ajax(
 			url, 
 			'POST',
@@ -238,7 +238,7 @@ function loadData(){
 	}
 	
 	let userid = plus.storage.getItem('userid');
-	let url = "http://192.168.1.115:8080" + "/getShopping_Trolley";
+	let url = "http://192.168.1.101:8080" + "/getShopping_Trolley";
 	ajax(
 		url, 
 		'POST',
@@ -290,7 +290,7 @@ function loadData(){
 					}
 					
 					
-					let url = "http://192.168.1.115:8080" + "/reduceItem";
+					let url = "http://192.168.1.101:8080" + "/reduceItem";
 					ajax(
 						url, 
 						'POST',
@@ -313,7 +313,7 @@ function loadData(){
 				let imgflag = document.getElementsByClassName("imgflag")[0];
 				imgflag.addEventListener('tap', function(e){
 					let userid = plus.storage.getItem('userid');
-					let url = "http://192.168.1.115:8080" + "/getShopping_Trolley";
+					let url = "http://192.168.1.101:8080" + "/getShopping_Trolley";
 					ajax(
 						url, 
 						'POST',
@@ -370,7 +370,7 @@ function loadData(){
 					itemInfos.push(ndata[i].price);
 					itemInfos.push(ndata[i].userid);
 					
-					let url = "http://192.168.1.115:8080" + "/reduce";
+					let url = "http://192.168.1.101:8080" + "/reduce";
 					ajax(
 						url, 
 						'POST',
@@ -405,7 +405,7 @@ function loadData(){
 						itemInfos.push(ndata[i].price);
 						itemInfos.push(ndata[i].userid);
 						
-						let url = "http://192.168.1.115:8080" + "/add";
+						let url = "http://192.168.1.101:8080" + "/add";
 						ajax(
 							url, 
 							'POST',

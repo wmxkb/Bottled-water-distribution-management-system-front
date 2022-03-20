@@ -110,7 +110,7 @@ const ajax = (url, type, data, datatype, success, error) =>{
 		} 
 	}
 	// 规定请求的类型、URL 以及是否异步处理请求。""
-	xmlhttp.open(type, url, true);
+	xmlhttp.open(type, url, false);
 	// 添加 HTTP 头
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	// 将请求发送到服务器。

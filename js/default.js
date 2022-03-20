@@ -89,7 +89,16 @@ document.addEventListener('plusready', function(){
 		
 	});
 	addTaplistener(order, function(e){
-		changeView('order.html');
+		let w = plus.webview.getWebviewById('order.html');
+		// w.evalJS('loadData()');
+		// setTimeout(function() {
+			w.show("pop-in",200,function(){
+				// w.evalJS
+			});
+		// }, 0);
+		
+		// loadData
+		// changeView('order.html');
 		headerTxt.children[0].innerHTML = "我的订单";
 		home.style.color = "#929292";
 		my.style.color = "#929292";

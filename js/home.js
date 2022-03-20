@@ -71,7 +71,7 @@ document.addEventListener('plusready', function(e){
 		itemInfos.push(plus.storage.getItem('userid'))
 		// username.value = "233";
 		// 目标url
-		let url = "http://192.168.1.115:8080" + "/add";
+		let url = "http://192.168.1.101:8080" + "/add";
 		ajax(
 			url, 
 			'POST',

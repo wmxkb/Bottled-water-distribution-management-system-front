@@ -1,96 +1,95 @@
-
-
-document.addEventListener('plusready', function(){
+document.addEventListener('plusready', function() {
 	let w = plus.webview.currentWebview();
 	// alert(233)
 	// 点击提交订单按钮
 	let submitOrder = document.getElementById('submitOrder');
-	submitOrder.addEventListener('tap',function(e){
+	submitOrder.addEventListener('tap', function(e) {
 		// 向后台发送订单信息
 		let orderUserId = plus.storage.getItem('userid');
-		let url = "http://192.168.1.115:8080" + "/getShopping_Trolley"
+		let url = "http://192.168.1.101:8080" + "/getShopping_Trolley"
 		var orderGoods = [],
-		orderCount = []
-		
+			orderCount = []
+
 		ajax(
-			url, 
-			'POST',
-			 {
-				'userid':orderUserId,
-			 }, 
+			url,
+			'POST', {
+				'userid': orderUserId,
+			},
 			'default',
 			success,
-			function error(){
+			function error() {
 				alert("无网络连接");
 			}
 		);
-		
-		function success(data){
+
+		function success(data) {
 			let ndata = eval('(' + data + ')')
-			for(let i = 0; i < ndata.length; i++){
+			for (let i = 0; i < ndata.length; i++) {
 				orderGoods.push(ndata[i].waterType)
 				orderCount.push(ndata[i].count)
 			}
-			
+
 			let myDate = new Date();
-			let orderTime = myDate.toLocaleDateString() + myDate.toLocaleTimeString();
+			let orderTime = CurrentDate() + " " + CurrentTime();
+			
+			let w_new = plus.webview.getWebviewById('order.html');
+			// w.evalJS('addLi()')
+			mui.fire(w_new,'sendGoods',{orderTime: orderTime,orderGoods:orderGoods, orderCount:orderCount, orderPrice:w.money});
 			ajax(
-				"http://192.168.1.115:8080/addOrder", 
-				'POST',
-				 {
-					'orderTime':orderTime,
-					'orderUserId':orderUserId,
-					'orderGoods':orderGoods,
-					'orderCount':orderCount,
-					'orderPrice':w.money,
-					
-				 }, 
+				"http://192.168.1.101:8080/addOrder",
+				'POST', {
+					'orderTime': orderTime,
+					'orderUserId': orderUserId,
+					'orderGoods': orderGoods,
+					'orderCount': orderCount,
+					'orderPrice': w.money,
+
+				},
 				'default',
-				function success(data){
+				function success(data) {
 					// alert(data);
 				},
-				function error(){
+				function error() {
 					alert("无网络连接");
 				}
 			);
 		}
-		
+
 		ajax(
-			"http://192.168.1.115:8080/deleteAll", 
-			'POST',
-			 {
-				'userid':orderUserId,
-			 }, 
+			"http://192.168.1.101:8080/deleteAll",
+			'POST', {
+				'userid': orderUserId,
+			},
 			'default',
-			function success(data){
+			function success(data) {
 				let w1 = plus.webview.getWebviewById('shopping_trolley.html');
 				w1.evalJS('loadData()');
 				// alert(data)
 			},
-			function error(){
+			function error() {
 				// alert("无网络连接");
 			}
 		);
-		
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
+
 		closeWebview();
-	},false);
-	
-	
+	}, false);
+
+
 	let money = document.getElementsByClassName('money')[0];
 	money.innerHTML = '￥ ' + w.money;
-	
-	
-	
-	
-	
-	
-},false);
+
+
+
+
+
+
+}, false);
 
 
 
@@ -117,3 +116,51 @@ document.addEventListener('plusready', function(){
 // 		}
 // 	);
 // }
+
+
+function CurrentDate() {
+	var now = new Date();
+
+	var year = now.getFullYear(); //年
+	var month = now.getMonth() + 1; //月
+	var day = now.getDate(); //日
+
+
+	var date = year + "-";
+
+	if (month < 10)
+		date += "0";
+
+	date += month + "-";
+
+	if (day < 10)
+		date += "0";
+
+	date += day;
+	return (date);
+}
+
+function CurrentTime() {
+	var now = new Date();
+
+	var hh = now.getHours(); //时
+	var mm = now.getMinutes(); //分
+	var ss = now.getSeconds(); //秒
+
+	var clock = "";
+
+
+	if (hh < 10)
+		clock += "0";
+	clock += hh + ":";
+
+	if (mm < 10)
+		clock += '0';
+	clock += mm + ":";
+
+	if (ss < 10)
+		clock += '0';
+	clock += ss;
+
+	return (clock);
+}

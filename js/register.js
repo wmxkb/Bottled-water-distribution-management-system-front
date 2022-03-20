@@ -20,7 +20,7 @@ document.addEventListener('plusready', function(e){
 		let userid = document.getElementById("userid").value;
 		
 		// 目标url
-		let url = "http://192.168.1.115:8080" + "/register";
+		let url = "http://192.168.1.101:8080" + "/register";
 		// 175.178.111.20
 		ajax(
 			url,

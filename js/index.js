@@ -60,7 +60,7 @@ document.addEventListener('plusready', function(e){
 		userinfos.push(password.value);
 		// username.value = "233";
 		// 目标url
-		let url = "http://192.168.1.115:8080" + "/login";
+		let url = "http://192.168.1.101:8080" + "/login";
 		// alert("333");
 		// 175.178.111.20:8080
 		
