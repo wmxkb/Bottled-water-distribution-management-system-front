@@ -53,6 +53,9 @@ document.addEventListener('plusready', function(e){
 		let id = this.children[0].getAttribute('id');
 		let l = this.parentNode.children[3].innerHTML.length;
 		let price = parseFloat(this.parentNode.children[3].innerHTML.substr(1, l - 1));
+		
+		let floor = fixChToNum((this.parentNode).parentNode.children[0].innerHTML)
+		let location = sl.options[sl.selectedIndex].value;
 		// alert(price);
 		if(id == 'type1'){
 			plus.storage.setItem('addWaterType', '10L大桶水');
@@ -69,6 +72,8 @@ document.addEventListener('plusready', function(e){
 		itemInfos.push(price);
 		itemInfos.push(1);
 		itemInfos.push(plus.storage.getItem('userid'))
+		itemInfos.push(location)
+		itemInfos.push(floor)
 		// username.value = "233";
 		// 目标url
 		let url = "http://192.168.1.101:8080" + "/add";
@@ -110,4 +115,103 @@ document.addEventListener('plusready', function(e){
 	
 	
 	
+	
+	
 },false);
+
+
+
+function fixChToNum(Ch){
+	let res;
+	switch (Ch){
+		case "一楼":
+			res = 1;
+			break;
+		case "二楼":
+			res = 2;
+			break;
+		case "三楼":
+			res = 3;
+			break;
+		case "四楼":
+			res = 4;
+			break;
+		case "五楼":
+			res = 5;
+			break;
+		case "六楼":
+			res = 6;
+			break;
+		default:
+			break;
+	}
+	return res;
+}
+
+
+function showData(){
+	let sl = document.getElementById("sl");
+	let location = sl.options[sl.selectedIndex].value;
+	let url = "http://192.168.1.101:8080" + "/getCommodity_infos";
+	ajax(
+		url, 
+		'POST',
+		 {
+			'location':location,
+		 }, 
+		'default',
+		function success(data){
+			let ndata = eval('(' + data + ')');
+			// alert(data);
+			for(let i = 0; i < ndata.length; i++){
+				// alert(ndata[i].floor)
+				// 从6楼开始...不知道为啥
+				
+				let commodityName = document.getElementsByClassName("type" + ndata[i].commodityType)[ndata[i].floor]
+				if(commodityName != null){
+					commodityName.parentNode.children[2].innerHTML = "余" + ndata[i].commodityCount + "份"
+					commodityName.parentNode.children[3].innerHTML = "￥" + ndata[i].commodityPrice
+				}
+				if(ndata[i].floor == 1){
+					let commodityName = document.getElementsByClassName("type" + ndata[i].commodityType)[7]
+					if(commodityName != null){
+						commodityName.parentNode.children[2].innerHTML = "余" + ndata[i].commodityCount + "份"
+						commodityName.parentNode.children[3].innerHTML = "￥" + ndata[i].commodityPrice
+					}
+				}
+				
+				if(ndata[i].floor == 6){
+					let commodityName = document.getElementsByClassName("type" + ndata[i].commodityType)[0]
+					if(commodityName != null){
+						commodityName.parentNode.children[2].innerHTML = "余" + ndata[i].commodityCount + "份"
+						commodityName.parentNode.children[3].innerHTML = "￥" + ndata[i].commodityPrice
+					}
+				}
+				
+				
+				
+				// let floor = document.getElementById("d" + r[i - 1].floor);
+				
+				// floor.innerHTML = "大桶水:" + r[i - 1].bigWater + "   小桶水:" + r[i - 1].smallWater;
+			}
+		},
+		function error(){
+			for(let i = 1; i <= 6; i++){
+				let commodityName = document.getElementsByClassName("type1")[i]
+				if(commodityName != null){
+					commodityName.parentNode.children[2].innerHTML = "余" + "??" + "份"
+					commodityName.parentNode.children[3].innerHTML = "￥" + "??"
+				}
+			}
+			
+		}
+	);
+}
+
+
+
+	
+// 选择location后触发
+function selectLocation(){
+	showData();
+}

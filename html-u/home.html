@@ -59,9 +59,9 @@
 					<p class="floorName">一楼</p>
 					<div class="floorGoods">
 						<img src="../img/homeimg/bigWater.png" />
-						<div class="waterType">10L桶装水</div>
-						<div class="restCount">余10份</div>
-						<div class="price">￥10.00</div>
+						<div class="waterType type1">10L大桶水</div>
+						<div class="restCount"></div>
+						<div class="price"></div>
 						<div class="dmg">
 							<img id="type1" src="../img/homeimg/add.png" class="addIcon">
 						</div>
@@ -84,16 +84,16 @@
 					<p class="floorName">二楼</p>
 					<div class="floorGoods">
 						<img src="../img/homeimg/bigWater.png" />
-						<div class="waterType">10L桶装水</div>
-						<div class="restCount">余10份</div>
-						<div class="price">￥6.66</div>
+						<div class="waterType type1">10L大桶水</div>
+						<div class="restCount"></div>
+						<div class="price"></div>
 						<div class="dmg">
 							<img id="type1" src="../img/homeimg/add.png" class="addIcon">
 						</div>
 					</div>
 					<div class="floorGoods">
 						<img src="../img/homeimg/smallWater.png" />
-						<div class="waterType">5L桶装水</div>
+						<div class="waterType 5L">5L桶装水</div>
 						<div class="restCount">余10份</div>
 						<div class="price">￥6.66</div>
 						<div class="dmg">
@@ -106,9 +106,9 @@
 					<p class="floorName">三楼</p>
 					<div class="floorGoods">
 						<img src="../img/homeimg/bigWater.png" />
-						<div class="waterType">10L桶装水</div>
-						<div class="restCount">余10份</div>
-						<div class="price">￥6.66</div>
+						<div class="waterType type1">10L大桶水</div>
+						<div class="restCount"></div>
+						<div class="price"></div>
 						<div class="dmg">
 							<img id="type1" src="../img/homeimg/add.png" class="addIcon">
 						</div>
@@ -127,9 +127,9 @@
 					<p class="floorName">四楼</p>
 					<div class="floorGoods">
 						<img src="../img/homeimg/bigWater.png" />
-						<div class="waterType">10L桶装水</div>
-						<div class="restCount">余10份</div>
-						<div class="price">￥6.66</div>
+						<div class="waterType type1">10L大桶水</div>
+						<div class="restCount"></div>
+						<div class="price"></div>
 						<div class="dmg">
 							<img id="type1" src="../img/homeimg/add.png" class="addIcon">
 						</div>
@@ -148,9 +148,31 @@
 					<p class="floorName">五楼</p>
 					<div class="floorGoods">
 						<img src="../img/homeimg/bigWater.png" />
-						<div class="waterType">10L桶装水</div>
+						<div class="waterType type1">10L大桶水</div>
+						<div class="restCount"></div>
+						<div class="price"></div>
+						<div class="dmg">
+							<img id="type1" src="../img/homeimg/add.png" class="addIcon">
+						</div>
+					</div>
+					<div class="floorGoods">
+						<img src="../img/homeimg/smallWater.png" />
+						<div class="waterType">5L桶装水</div>
 						<div class="restCount">余10份</div>
 						<div class="price">￥6.66</div>
+						<div class="dmg">
+							<img id="type2" src="../img/homeimg/add.png" class="addIcon">
+						</div>
+					</div>
+				</div>
+				
+				<div class="swiper-slide">
+					<p class="floorName">六楼</p>
+					<div class="floorGoods">
+						<img src="../img/homeimg/bigWater.png" />
+						<div class="waterType type1">10L大桶水</div>
+						<div class="restCount"></div>
+						<div class="price"></div>
 						<div class="dmg">
 							<img id="type1" src="../img/homeimg/add.png" class="addIcon">
 						</div>
@@ -181,7 +203,8 @@
 		  var mySwiper = new Swiper ('.swiper', {
 		    direction: 'horizontal', // 垂直切换选项
 		    loop: true, // 循环模式选项
-		    
+		    observer:true,
+			observerParents:true,
 		    // 如果需要分页器
 		    pagination: {
 		      el: '.swiper-pagination',

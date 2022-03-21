@@ -8,7 +8,9 @@ document.addEventListener('plusready', function() {
 		let orderUserId = plus.storage.getItem('userid');
 		let url = "http://192.168.1.101:8080" + "/getShopping_Trolley"
 		var orderGoods = [],
-			orderCount = []
+			orderCount = [],
+			orderLocation = [],
+			orderFloor = []
 
 		ajax(
 			url,
@@ -27,6 +29,9 @@ document.addEventListener('plusready', function() {
 			for (let i = 0; i < ndata.length; i++) {
 				orderGoods.push(ndata[i].waterType)
 				orderCount.push(ndata[i].count)
+				orderLocation.push(ndata[i].location)
+				orderFloor.push(ndata[i].floor)
+				// alert(ndata[i].floor)
 			}
 
 			let myDate = new Date();
@@ -43,6 +48,8 @@ document.addEventListener('plusready', function() {
 					'orderGoods': orderGoods,
 					'orderCount': orderCount,
 					'orderPrice': w.money,
+					'orderLocation':orderLocation,
+					'orderFloor':orderFloor,
 
 				},
 				'default',
