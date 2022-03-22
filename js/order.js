@@ -1,4 +1,7 @@
 document.addEventListener('plusready', function(e) {
+	// 隐藏webview 区域滚动
+	
+	plus.webview.currentWebview().setStyle({scrollIndicator:'none'});
 	let ws = null;
 	ws = plus.webview.currentWebview();
 	// offset是刷新动画距离顶部的距离
@@ -52,23 +55,40 @@ document.addEventListener('plusready', function(e) {
 	
 		for (let i = 0; i < orderGoods.length; i++) {
 			content +=
-				'<div>' +
+				'<li style="position : relative; ">' +
+				'<img src = "../img/homeimg/commodityType'+ selectType(orderGoods[i]) +'.png" style = "width: 60px; border:2px solid #f5f5f5; border-radius:10px" />' +
+				'<div style="position:absolute;top:5%; left:20%">' +
 				orderGoods[i] +
+				'</div>'+
 				' ' +
-				selectPrice(orderGoods[i]) +
+				'<div style="color:gray; position:absolute;top:55%; left:20%">' +
+				'￥' + selectPrice(orderGoods[i]) +
+				'</div>'+
 				' ' +
-				orderCount[i] +
-				'</div>'
+				'<div style="color:gray; position:absolute;top:30%; left:95%">' +
+				'x' + orderCount[i] +
+				'</div>'+
+				'<hr width="100% " style="border: 0.5px solid #d3d3d3;"/>'+
+				'</li>'
+			
 		}
-	
+		content += '</ul>'
+		
+		li.style.border = "8px solid #F5F5F5"
+		li.style.borderRadius = "30px"
+		li.className = 'waterType mui-table-view-cell bcolor_w'
 		li.innerHTML =
-			'<div>' +
+			'<div style="color: gray;">' +
 			orderTime +
 			'</div>' +
+			'<hr width="100% " style="border: 0.5px solid #d3d3d3;"/>'+
 			content +
 			"实付款：￥" +
-			orderPrice
-	
+			orderPrice +
+			'<span style="text-align:center; width:50px; border:1px solid #d3d3d3; border-radius:20px; position:absolute;left:80%">'+
+			'售后'+
+			'</span>'
+		
 		ul.insertBefore(li,child1)
 	}, false);
 
@@ -89,29 +109,45 @@ function GetDataAjax(ul, mainData, i) {
 		function success(data) {
 			// alert(itemMap)
 			let itemMap = eval('(' + data + ')')
+			// alert(itemMap[0].commodityType)
 			// alert(itemMap)
 			// alert(data)
-			let content = ""
+			let content = '<ul class="mui-table-view" style="position:relative">'
 			for (let j = 0; j < itemMap.length; j++) {
 				content +=
-					'<div>' +
+					'<li style="position : relative; ">' +
+					'<img src = "../img/homeimg/commodityType'+ itemMap[j].commodityType +'.png" style = "width: 60px; border:2px solid #f5f5f5; border-radius:10px" />' +
+					'<div style="position:absolute;top:5%; left:20%">' +
 					itemMap[j].orderGoods +
+					'</div>'+
 					' ' +
-					itemMap[j].commodityPrice +
+					'<div style="color:gray; position:absolute;top:55%; left:20%">' +
+					'￥' + itemMap[j].commodityPrice +
+					'</div>'+
 					' ' +
-					itemMap[j].orderCount +
-					'</div>'
+					'<div style="color:gray; position:absolute;top:30%; left:95%">' +
+					'x' + itemMap[j].orderCount +
+					'</div>'+
+					'<hr width="100% " style="border: 0.5px solid #d3d3d3;"/>'+
+					'</li>'
 			}
+			content += '</ul>'
 
 			let li = document.createElement("li")
-			li.className = 'waterType mui-table-view-cell'
+			li.style.border = "8px solid #F5F5F5"
+			li.style.borderRadius = "30px"
+			li.className = 'waterType mui-table-view-cell bcolor_w'
 			li.innerHTML =
-				'<div>' +
+				'<div style="color: gray;">' +
 				mainData[i].orderTime +
 				'</div>' +
+				'<hr width="100% " style="border: 0.5px solid #d3d3d3;"/>'+
 				content +
 				"实付款：￥" +
-				mainData[i].orderPrice
+				mainData[i].orderPrice +
+				'<span style="text-align:center; width:50px; border:1px solid #d3d3d3; border-radius:20px; position:absolute;left:80%">'+
+				'售后'+
+				'</span>'
 			ul.appendChild(li)
 
 			GetDataAjax(ul, mainData, i - 1)
@@ -175,6 +211,12 @@ function selectPrice(orderGood) {
 		return 0
 }
 
+function selectType(orderGood){
+	if (orderGood == "10L大桶水")
+		return 1
+	else if (orderGood == "5L小桶水")
+		return 2
+}
 
 
 // function addLi() {

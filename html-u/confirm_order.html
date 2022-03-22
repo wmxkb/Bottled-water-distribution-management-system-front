@@ -2,44 +2,77 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<script src="../js/mui.min.js" type="text/javascript"></script>
 		<script src="../js/confirm_order.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/mine.js" type="text/javascript" charset="utf-8"></script>
-		
+
 		<link rel="stylesheet" href="../css/mui.css" />
-		<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
-		<link rel="stylesheet" type="text/css" href="../css/confirm_order.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+
+		<link rel="stylesheet" type="text/css" href="../css/shopping_trolley.css" />
+		<link rel="stylesheet" type="text/css" href="../css/confirm_order.css" />
 		<title></title>
 	</head>
 	<body class="content">
-		
+
 		<!-- 标题 -->
 		<!-- mui-bar-nav 暂时不需要阴影-->
-		<header class="mui-bar " style="background-color: white; box-shadow: 0 0 0 0 rgba(0,0,0,0);"> 
-			<a id = 'back' class="mui-icon mui-icon-left-nav mui-pull-left mui-action-back"></a>
+		<header class="mui-bar " style="background-color: white; box-shadow: 0 0 0 0 rgba(0,0,0,0);">
+			<a id='back' class="mui-icon mui-icon-left-nav mui-pull-left mui-action-back"></a>
 			<h1 class="mui-title">确认订单</h1>
 		</header>
-		
-		
-		
-		
+
+
+		<div class="mui-scroll-wrapper" style="height: 92%;">
+			<div class="mui-scroll">
+				<ul id="ul" class="itemUl2">
+
+
+				</ul>
+
+			</div>
+		</div>
+
+		<script type="text/javascript" charset="utf-8">
+			mui.ready(function() {
+				//初始化区域滚动  
+				var scroll = mui(".mui-scroll-wrapper").scroll(
+				{
+					bounce: true,
+					indicators: false,
+				});
+				//            
+				//          //监听区域滚动的滑动事件  
+				//          document.addEventListener("scroll", function() {  
+				//              console.log( -scroll.y ); //获取滚动条的位置  
+				//          });  
+				//            
+				//          //点击获取滚动条的位置  
+				//          document.body.addEventListener("tap",function () {  
+				//              console.log( -scroll.y ) //获取滚动条的位置  
+				//          })  
+			})
+		</script>
+
+
 		<!-- 底部模块 -->
 		<div class="bottomtab">
-			
+
 			<!-- 全选 -->
 			<div id="selectAll" class="selectAll">
 				<!-- <span class="selectImg iconfont icon-xuanze"> </span> -->
 				<span class="selectImgText">支付</span>
 				<span class="money">¥ 0.00</span>
 			</div>
-			
+
 			<!-- 结算 -->
 			<div id="submitOrder" class="closeAccount">
 				提交订单
 			</div>
-			
-			
+
+
 		</div>
 	</body>
 </html>

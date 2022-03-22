@@ -37,7 +37,7 @@
 	/* 位置 */
 	position: fixed;
 	bottom: 0px;
-	
+	z-index: 20;
 	/* 尺寸 */
 	width: 100%;
 	height: 60px;
@@ -143,9 +143,24 @@
 .itemUl {
 	list-style: none;
 	
+	/* position: relative; */
+	/* top: 5%; */
 	/* height: 80%; */
 
 	margin-top: 5%;
+	
+	/* background-color: #007AFF; */
+}
+
+/* 饮品模块ul2 */
+.itemUl2 {
+	list-style: none;
+	
+	/* position: relative; */
+	/* top: 50px; */
+	/* height: 80%; */
+
+	margin-top: 15%;
 	
 	/* background-color: #007AFF; */
 }
@@ -172,14 +187,14 @@
 /* li内文字 */
 .waterTypetext{
 	/* background-color: #007AFF; */
-	/* width: 40%; */
+	width: 80%;
 	height: 100%;
-	line-height: 58px;
+	/* line-height: 58px; */
 	/* margin-left: 22%; */
-	text-align: center;
+	/* text-align: center; */
 	
 	position: absolute;
-	left: calc(50% - 36.89px);
+	/* left: 30%; */
 	
 }
 
@@ -225,11 +240,13 @@
 
 /* 选择图片div */
 .selectimg{
+	width: 20px;
+	height: 20px;
 	/* margin-top: ; */
 	position: absolute;
-	
 	top: calc(50% - 10px);
-	left: 5%;
+	left: 0%;
+	z-index: 50;
 }
 /* 选择图片 */
 .selectimg img{
