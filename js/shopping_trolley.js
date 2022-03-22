@@ -283,6 +283,8 @@ function loadData(){
 					itemInfos.push(ndata[i].count);
 					itemInfos.push(ndata[i].price);
 					itemInfos.push(ndata[i].userid);
+					itemInfos.push(ndata[i].location);
+					itemInfos.push(ndata[i].floor);
 					
 					if(li.children[1].children[0].className.indexOf('selected') != -1){
 						let money = document.getElementsByClassName('money')[0];
@@ -296,6 +298,31 @@ function loadData(){
 						'POST',
 						 {
 							'itemInfos':itemInfos,
+						 }, 
+						'default',
+						function success(data){
+							// alert(data);
+						},
+						function error(){
+							alert("无网络连接");
+						}
+					);
+					
+					// 首页商品加回数量
+					let w = plus.webview.getWebviewById("home.html")
+					w.evalJS('restoreCount("' +ndata[i].location+'",'+ndata[i].floor+ ',"'+getWaterType(ndata[i].waterType) +'",'+ndata[i].count+')')
+					// alert("2333")
+					
+					// 同步数据库 添加
+					url = "http://192.168.1.101:8080" + "/addCommodityCount";
+					ajax(
+						url, 
+						'POST',
+						 {
+							'location':ndata[i].location,
+							'floor':ndata[i].floor,
+							'commodityType':getWaterType(ndata[i].waterType),
+							'Count':ndata[i].count,
 						 }, 
 						'default',
 						function success(data){
@@ -369,6 +396,8 @@ function loadData(){
 					itemInfos.push(parseInt(mcount.innerHTML));
 					itemInfos.push(ndata[i].price);
 					itemInfos.push(ndata[i].userid);
+					itemInfos.push(ndata[i].location);
+					itemInfos.push(ndata[i].floor);
 					
 					let url = "http://192.168.1.101:8080" + "/reduce";
 					ajax(
@@ -387,6 +416,32 @@ function loadData(){
 					);
 					
 					mcount.innerHTML = parseInt(mcount.innerHTML) - 1;
+					
+					// 首页商品加回数量
+					let w = plus.webview.getWebviewById("home.html")
+					w.evalJS('restoreCount("' +ndata[i].location+'",'+ndata[i].floor+ ',"'+getWaterType(ndata[i].waterType) +'",'+1+')')
+					// alert("2333")
+					
+					// 同步数据库 添加
+					url = "http://192.168.1.101:8080" + "/addCommodityCount";
+					ajax(
+						url, 
+						'POST',
+						 {
+							'location':ndata[i].location,
+							'floor':ndata[i].floor,
+							'commodityType':getWaterType(ndata[i].waterType),
+							'Count':1,
+						 }, 
+						'default',
+						function success(data){
+							// alert(data);
+						},
+						function error(){
+							alert("无网络连接");
+						}
+					);
+					
 				});
 				// 增加数量按钮
 				addTaplistener(radd, function(e){
@@ -404,6 +459,8 @@ function loadData(){
 						itemInfos.push(parseInt(mcount.innerHTML));
 						itemInfos.push(ndata[i].price);
 						itemInfos.push(ndata[i].userid);
+						itemInfos.push(ndata[i].location);
+						itemInfos.push(ndata[i].floor);
 						
 						let url = "http://192.168.1.101:8080" + "/add";
 						ajax(
@@ -422,6 +479,30 @@ function loadData(){
 						);
 						
 						mcount.innerHTML = parseInt(mcount.innerHTML) + 1;
+						// 首页商品减少数量
+						let w = plus.webview.getWebviewById("home.html")
+						w.evalJS('reduceCount("' +ndata[i].location+'",'+ndata[i].floor+ ',"'+getWaterType(ndata[i].waterType) +'",'+1+')')
+						// alert("2333")
+						
+						// 同步数据库 减少
+						url = "http://192.168.1.101:8080" + "/reduceCommodityCount";
+						ajax(
+							url, 
+							'POST',
+							 {
+								'location':ndata[i].location,
+								'floor':ndata[i].floor,
+								'commodityType':getWaterType(ndata[i].waterType),
+							 }, 
+							'default',
+							function success(data){
+								// alert(data);
+							},
+							function error(){
+								alert("无网络连接");
+							}
+						);
+						
 					}else{
 						confirm("一次最多订购同类水20桶");
 					}
@@ -440,4 +521,12 @@ function loadData(){
 		}
 	);
 	
+}
+
+
+function getWaterType(waterType){
+	if(waterType == "10L大桶水")
+		return 1
+	else
+		return 2
 }

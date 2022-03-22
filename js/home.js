@@ -91,7 +91,30 @@ document.addEventListener('plusready', function(e){
 				alert("无网络连接");
 			}
 		);
+		// 修改首页商品数量
+		let Count = this.parentNode.children[2]
+		// alert(Count.innerHTML.substr(1, Count.innerHTML.length - 2))
 		
+		Count.innerHTML ='余' + (parseInt(Count.innerHTML.substr(1, parseInt(Count.innerHTML.length) - 2)) - 1) + '份'
+		
+		// 同步数据库 - 减少
+		url = "http://192.168.1.101:8080" + "/reduceCommodityCount";
+		ajax(
+			url, 
+			'POST',
+			 {
+				'location':location,
+				'floor':floor,
+				'commodityType':id.substr(4,1)
+			 }, 
+			'default',
+			function success(data){
+				// alert(data);
+			},
+			function error(){
+				alert("无网络连接");
+			}
+		);
 	});
 	
 	// // 购物车插入测试
@@ -214,4 +237,38 @@ function showData(){
 // 选择location后触发
 function selectLocation(){
 	showData();
+}
+
+
+// 购物车删除商品后恢复首页数量
+function restoreCount(location, floor, waterType, count){
+	// alert("2333")
+	let sl = document.getElementById("sl");
+	let nowLocation = sl.options[sl.selectedIndex].value;
+	
+	let goodName = document.getElementsByClassName("type1")[floor];
+	
+	let Count = goodName.parentNode.children[2];
+	// alert(Count.innerHTML)
+	if(nowLocation == location){
+		Count.innerHTML ='余' + (parseInt(Count.innerHTML.substr(1, parseInt(Count.innerHTML.length) - 2)) + count) + '份'
+	}
+	
+	
+}
+
+function reduceCount(location, floor, waterType, count){
+	// alert("2333")
+	let sl = document.getElementById("sl");
+	let nowLocation = sl.options[sl.selectedIndex].value;
+	
+	let goodName = document.getElementsByClassName("type1")[floor];
+	
+	let Count = goodName.parentNode.children[2];
+	// alert(Count.innerHTML)
+	if(nowLocation == location){
+		Count.innerHTML ='余' + (parseInt(Count.innerHTML.substr(1, parseInt(Count.innerHTML.length) - 2)) - count) + '份'
+	}
+	
+	
 }
