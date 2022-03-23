@@ -287,7 +287,7 @@ function loadData() {
 					'<img class="imgflag" src="../img/circle.png"/></div>' +
 					'<div id="" class="waterTypetext" >' +
 					'<div style="position:absolute; left:15%">' +
-					ndata[i].waterType + '（' + changeLocationToText(ndata[i].location) + ' ' + ndata[i].floor + '层）' +
+					ndata[i].waterType + '（' + changeLocationToText(ndata[i].location) + ' ' + ndata[i].floor + '楼）' +
 					'</div>' +
 					'<div style="color:gray; position:absolute; left:15% ; top:60%">' +
 					'￥' + ndata[i].price +

@@ -29,7 +29,7 @@ document.addEventListener('plusready', function(e){
 	// plus.webview.currentWebview().
 	// alert("233");
 	// alert(plus.webview.getWebviewById("home.html"));
-	
+	showData()
 	changeView("home.html");
 	
 	// alert("233");

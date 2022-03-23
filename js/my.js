@@ -19,10 +19,11 @@ document.addEventListener('plusready', function(e){
 		// 关闭屏蔽罩
 		popdiv.className = "message_alert";
 		// 重置当前导航栏初始状态
-		changeView('home.html');
-		var home = plus.webview.getWebviewById('default.html').evalJS(
-			'home.style.color = "#007aff";setting.style.color = "#929292";func.style.color="#929292";'
-		);
+		// 2022.3.23 还未重写
+		// changeView('home.html');
+		// var home = plus.webview.getWebviewById('default.html').evalJS(
+		// 	'home.style.color = "#007aff";setting.style.color = "#929292";func.style.color="#929292";'
+		// );
 		plus.storage.setItem("keepLogin", "notLogin");
 		plus.storage.setItem("userid", "none");
 		// 退回登录页面

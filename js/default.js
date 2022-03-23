@@ -60,10 +60,10 @@ document.addEventListener('plusready', function(){
 	addTaplistener(home, function(e){
 		changeView('home.html');
 		headerTxt.children[0].innerHTML = "首页";
-		home.style.color = "#007aff";
-		my.style.color = "#929292";
-		func.style.color="#929292";
-		order.style.color="#929292";
+		// home.style.color = "#007aff";
+		// my.style.color = "#929292";
+		// func.style.color="#929292";
+		// order.style.color="#929292";
 		
 	});
 	addTaplistener(func, function(e){
@@ -75,10 +75,10 @@ document.addEventListener('plusready', function(){
 			
 		});
 		headerTxt.children[0].innerHTML = "购物车";
-		home.style.color = "#929292";
-		my.style.color = "#929292";
-		func.style.color="#007aff";
-		order.style.color="#929292";
+		// home.style.color = "#929292";
+		// my.style.color = "#929292";
+		// func.style.color="#007aff";
+		// order.style.color="#929292";
 		
 		let disTab = document.getElementById('disTap');
 		
@@ -100,19 +100,19 @@ document.addEventListener('plusready', function(){
 		// loadData
 		// changeView('order.html');
 		headerTxt.children[0].innerHTML = "我的订单";
-		home.style.color = "#929292";
-		my.style.color = "#929292";
-		func.style.color="#929292";
-		order.style.color="#007aff";
+		// home.style.color = "#929292";
+		// my.style.color = "#929292";
+		// func.style.color="#929292";
+		// order.style.color="#007aff";
 		
 	});
 	addTaplistener(my, function(e){
 		changeView('my.html');
 		headerTxt.children[0].innerHTML = "我的";
-		home.style.color = "#929292";
-		my.style.color = "#007aff";
-		func.style.color="#929292";
-		order.style.color="#929292";
+		// home.style.color = "#929292";
+		// my.style.color = "#007aff";
+		// func.style.color="#929292";
+		// order.style.color="#929292";
 		
 	});
 	
