@@ -11,3 +11,27 @@
 .mui-table-view-cell.mui-active {
 	background-color: #FFFFFF;
 }
+
+/* .mui-table-view::after{
+	height: 0px!important; 
+}
+.mui-slider-group::after{
+	height: 0px!important;
+}
+
+.mui-table-view-cell::after{
+	height: 0px!important;
+}
+.mui-control-content::after{
+	height: 0px!important;
+}
+.mui-slider-item::after{
+	height: 0px!important;
+} */
+/* .mui-slider-handle::after{
+	height: 0px!important; 
+} */
+
+/* .mui-slider::after{
+	height: 0px!important; 
+} */

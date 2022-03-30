@@ -11,8 +11,32 @@
 /* 边缘与顶部间距 */
 .public-top {
 	margin-top: 10px;
+	/* width: 90%; */
+	
 }
 
+.fixs{
+	background-color: #F9F9F9;
+	width: 90%;
+	/* height: px; */
+	position: relative;
+	left: 5%;
+	
+	border-radius: 15px;
+}
+
+.mui-input-group::before{
+	/* background-color: #0062CC; */
+	height: 0;
+}
+.mui-input-group::after{
+	/* background-color: #0062CC; */
+	height: 0;
+}
+
+.mui-input-row::after{
+	height: 0px!important; 
+}
 
 .div-inblock {
 	display: inline-block;

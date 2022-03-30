@@ -166,7 +166,7 @@ document.addEventListener('plusready', function(e) {
 				for(let i = 0; i < si.length; i++){
 					if(si[i].className.indexOf("selected") != -1){
 						select_order.push(1)
-						allPrice += parseFloat(ndata[i].price)
+						allPrice += parseFloat(ndata[i].price) * ndata[i].count
 					}
 					else{
 						select_order.push(0)
@@ -451,7 +451,7 @@ function loadData() {
 					// 首页商品加回数量
 					let w = plus.webview.getWebviewById("home.html")
 					w.evalJS('restoreCount("' + ndata[i].location + '",' + ndata[i].floor + ',"' +
-						getWaterType(ndata[i].waterType) + '",' + 1 + ')')
+						ndata[i].waterType + '",' + 1 + ')')
 					// alert("2333")
 
 					// 同步数据库 添加
@@ -534,7 +534,7 @@ function loadData() {
 									// 首页商品减少数量
 									let w = plus.webview.getWebviewById("home.html")
 									w.evalJS('reduceCount("' + ndata[i].location + '",' + ndata[i].floor + ',"' +
-										getWaterType(ndata[i].waterType) + '",' + 1 + ')')
+										ndata[i].waterType + '",' + 1 + ')')
 								}
 								
 							},

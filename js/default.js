@@ -3,7 +3,7 @@
 
 
 document.addEventListener('plusready', function(){
-	plus.navigator.setStatusBarBackground("#ffffff");
+	// plus.navigator.setStatusBarBackground("#ffffff");
 	webviewCreate({
 		subpage:[
 		{

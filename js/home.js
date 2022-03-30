@@ -242,11 +242,11 @@ function selectLocation(){
 
 // 购物车删除商品后恢复首页数量
 function restoreCount(location, floor, waterType, count){
-	// alert("2333")
 	let sl = document.getElementById("sl");
 	let nowLocation = sl.options[sl.selectedIndex].value;
 	
-	let goodName = document.getElementsByClassName("type1")[floor];
+	// alert(String(getWaterType(waterType)))
+	let goodName = document.getElementsByClassName(String(getWaterType(waterType)))[floor];
 	
 	let Count = goodName.parentNode.children[2];
 	// alert(Count.innerHTML)
@@ -258,12 +258,10 @@ function restoreCount(location, floor, waterType, count){
 }
 
 function reduceCount(location, floor, waterType, count){
-	// alert("2333")
 	let sl = document.getElementById("sl");
 	let nowLocation = sl.options[sl.selectedIndex].value;
 	
-	let goodName = document.getElementsByClassName("type1")[floor];
-	
+	let goodName = document.getElementsByClassName(String(getWaterType(waterType)))[floor];
 	let Count = goodName.parentNode.children[2];
 	// alert(Count.innerHTML)
 	if(nowLocation == location){
@@ -271,4 +269,11 @@ function reduceCount(location, floor, waterType, count){
 	}
 	
 	
+}
+
+function getWaterType(waterType) {
+	if (waterType == "10L大桶水")
+		return "type1"
+	else
+		return "type2"
 }
