@@ -1,0 +1,66 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/* 地点选择标签样式 */
+#sl {
+	/* 位置 */
+	position: fixed;
+	top: 0px;
+	left: 10px;
+
+	width: 25%;
+
+	/* 边框样式 */
+	border: none;
+	/* 聚焦时边框颜色 */
+	outline: none;
+	/* 背景颜色 */
+	background-color: white;
+	/* 字体颜色 */
+	color: black;
+	/* 文字大小 */
+	font-size: 20px;
+	appearance: none;
+	/* 隐藏下拉图标 */
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	/* 显示箭头图片 */
+	background: url("../img/triangle.png");
+	/* 背景图片位置 */
+	background-position: 95% 50%;
+	/* 是否重复填充 */
+	background-repeat: no-repeat;
+	/* 背景图片尺寸 */
+	background-size: 6px 6px;
+	/* 背景图的绘制区域 */
+	/* padding-box 内边距框 */
+	background-clip: padding-box;
+	/* 为箭头留出位置 */
+	padding-right: 24px;
+}
+
+.selectfont {
+	font-weight: 400;
+	/* color: #fd8008; */
+	font-family: "宋体";
+
+
+}
+
+.boxStyle {
+	width: 25%;
+	height: 28%;
+	float: left;
+	background-color: lightyellow;
+	text-align: center;
+
+	line-height: 100px;
+	border: 1px solid #000000;
+	border-style: solid; border-width: 0.5px 0.5px 0.5px 0.5px;
+}
+
+/* .boxStyle::before{
+	border: 1px solid #000000;
+} */

@@ -1,5 +1,25 @@
 // plusready，H5+api需要在plusready后执行
 document.addEventListener('plusready', function(e){
+	
+	webviewCreate({
+		subpage:[
+		{
+			url:"../index.html",
+			id:"index.html",
+			style:{
+				top:'0px',
+				bottom:'0px',
+			
+			},
+		},
+		
+		
+		
+		],
+	},
+	// plus.webview.currentWebview()
+	);
+	
 	let logout = document.getElementById("logout");
 	let confirm = document.getElementById("confirm");
 	let cancle = document.getElementById("cancle");

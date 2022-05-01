@@ -96,6 +96,7 @@ document.addEventListener('plusready', function(e) {
 
 
 function GetDataAjax(ul, mainData, i) {
+	// alert("ceshi")
 	if (i < 0) {
 		ul.style.display = "block"
 		return 0;
@@ -107,7 +108,7 @@ function GetDataAjax(ul, mainData, i) {
 		},
 		'default',
 		function success(data) {
-			// alert(itemMap)
+			// alert(data)
 			let itemMap = eval('(' + data + ')')
 			// alert(itemMap[0].commodityType)
 			// alert(itemMap)
@@ -165,12 +166,12 @@ function GetDataAjax(ul, mainData, i) {
 
 function loadData() {
 	let userid = plus.storage.getItem('userid')
+	// alert(userid)
 	let ul = document.getElementById('ul')
 	ul.style.display = "none"
 	for (let i = ul.children.length - 1; i >= 0; i--) {
 		ul.removeChild(ul.children[i]);
 	}
-
 
 	let url = "http://192.168.1.101:8080" + "/getOrderMain"
 	ajax(
@@ -180,7 +181,7 @@ function loadData() {
 		},
 		'default',
 		function success(data) {
-
+			// alert(data)
 			let mainData = eval('(' + data + ')')
 			GetDataAjax(ul, mainData, mainData.length - 1)
 			// for(let i = mainData.length - 1; i >= 0 ; i--){

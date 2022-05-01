@@ -30,6 +30,14 @@ document.addEventListener('plusready', function(e) {
 
 					},
 				},
+				{
+					url:"./html-a/tab_nav.html",
+					id:"tab_nav.html",
+					style:{
+						top:'0px',
+						bottom:'0px',
+					},
+				}
 
 			],
 		},
@@ -42,6 +50,8 @@ document.addEventListener('plusready', function(e) {
 
 	if (plus.storage.getItem("keepLogin") == "aleadyLogin") {
 		changeView("default.html");
+	}else if(plus.storage.getItem("keepLogin") == "aleadyLogin1"){
+		changeView("tab_nav.html");
 	}
 	// 获取登录按钮所在div
 	let loginbox = document.getElementById("loginbox");
@@ -113,6 +123,7 @@ document.addEventListener('plusready', function(e) {
 				}
 			);
 		} else {
+			plus.storage.setItem("keepLogin", "aleadyLogin1")
 			ajax(
 				url + "/admin_login",
 				'POST', {

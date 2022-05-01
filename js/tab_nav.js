@@ -47,7 +47,7 @@ document.addEventListener('plusready', function(e) {
 	if (show_data != null) {
 		show_data.addEventListener('tap', function(e) {
 			changeView('show_data.html')
-			mui_title.innerHTML = "销售数据"
+			mui_title.innerHTML = "水量数据"
 		}, false)
 	}
 
@@ -70,6 +70,8 @@ document.addEventListener('plusready', function(e) {
 	let admin_my = document.getElementById('admin_my')
 	if (admin_my != null) {
 		admin_my.addEventListener('tap', function(e) {
+			// plus.storage.setItem("keepLogin") == ""
+			// changeView('index.html')
 			changeView('admin_my.html')
 			mui_title.innerHTML = "我的"
 		}, false)

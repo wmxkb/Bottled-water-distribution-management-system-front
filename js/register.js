@@ -32,11 +32,12 @@ document.addEventListener('plusready', function(e){
 			 }, 
 			'default',
 			function success(data){
-				if(data == 0)
+				if(data == 0){
+					alert("注册成功");
 					changeText('register', 'index.html', "注册成功");
 					
 					// plus.webview.currentWebview().hide();
-				else
+				}else
 					alert("输入不符合规范");
 			},
 			function error(){
