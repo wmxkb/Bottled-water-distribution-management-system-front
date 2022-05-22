@@ -16,14 +16,15 @@
 				let api = '/searchUser'
 				if (event.keyCode == 13) { //用户点击回车的事件号为13
 					var keyword = document.getElementById('searchInput').value;
-					mui.ajax(url+api,{
-						data:{
-							username : keyword
+					plus.storage.setItem('username', keyword)
+					mui.ajax(url + api, {
+						data: {
+							username: keyword
 						},
-						dataType:'json',//服务器返回json格式数据
-						type:'post',//HTTP请求类型
-						timeout:10000,//超时时间设置为10秒；
-						success:function(data){
+						dataType: 'json', //服务器返回json格式数据
+						type: 'post', //HTTP请求类型
+						timeout: 10000, //超时时间设置为10秒；
+						success: function(data) {
 							plus.storage.setItem("userid", data.username)
 							document.getElementById('username').innerHTML = data.username
 							document.getElementById('sno').innerHTML = data.sno
@@ -33,55 +34,102 @@
 							document.getElementById('allMonth').innerHTML = data.allMoney
 							// alert(data.userid)
 						},
-						error:function(xhr,type,errorThrown){
-							
+						error: function(xhr, type, errorThrown) {
+
 						}
 					});
 					// alert(keyword);
 				}
 			}
-			
-			function openOrderWindow(){
+
+			function openOrderWindow() {
 				mui.openWindow({
-				    url:'orderForuser.html',
-				    id:'orderForuser.html',
-				    styles:{
-				      top: '0px',//新页面顶部位置
-				      bottom:'0px',//新页面底部位置
-				      width:'100%',//新页面宽度，默认为100%
-				      height:'100%',//新页面高度，默认为100%
-				    },
-				    extras:{
-				      //自定义扩展参数，可以用来处理页面间传值
-				    },
-				    createNew:false,//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
-				    show:{
-				      autoShow:true,//页面loaded事件发生后自动显示，默认为true
-				      aniShow:'slide-in-right',//页面显示动画，默认为”slide-in-right“；
-				      duration:200//页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
-				    },
-				    waiting:{
-				      autoShow:false,//自动显示等待框，默认为true
-				      title:'正在加载...',//等待对话框上显示的提示内容
-				      options:{
-				        // width:waiting-dialog-widht,//等待框背景区域宽度，默认根据内容自动计算合适宽度
-				        // height:waiting-dialog-height,//等待框背景区域高度，默认根据内容自动计算合适高度
-				        // ......
-				      }
-				    }
+				 url: 'orderForuser.html',
+					id: 'orderForuser.html',
+					styles: {
+						top: '0px', //新页面顶部位置
+						bottom: '0px', //新页面底部位置
+				 	width: '100%', //新页面宽度，默认为100%
+						height: '100%', //新页面高度，默认为100%
+					},
+					extras: {
+						//自定义扩展参数，可以用来处理页面间传值
+					},
+					createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+					show: {
+						autoShow: true, //页面loaded事件发生后自动显示，默认为true
+						aniShow: 'slide-in-right', //页面显示动画，默认为”slide-in-right“；
+						duration: 200 //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+					},
+					waiting: {
+				 	autoShow: false, //自动显示等待框，默认为true
+						title: '正在加载...', //等待对话框上显示的提示内容
+						options: {
+							// width:waiting-dialog-widht,//等待框背景区域宽度，默认根据内容自动计算合适宽度
+				  	// height:waiting-dialog-height,//等待框背景区域高度，默认根据内容自动计算合适高度
+							// ......
+						}
+					}
 				});
+			}
+
+			function setPassword() {
+				// var keyword = document.getElementById('searchInput').value
+				document.getElementById('messageWindows').style.display = "block"
+
+			}
+
+			function f1() {
+				document.getElementById('messageWindows').style.display = "none"
+				let url = 'http://192.168.1.101:8080'
+				let api = '/setPassword'
+				// alert(plus.storage.getItem('username'))
+				// var keyword = document.getElementById('searchInput').value;
+				let newPassword = document.getElementById('newPassword').value
+				// console.log("frewghthetr" + plus.storage.getItem('username'))
+				mui.ajax(url + api, {
+					data: {
+						'password':newPassword,
+						'username':plus.storage.getItem('username')
+					},	
+					dataType: 'json', //服务器返回json格式数据
+					type: 'post', //HTTP请求类型
+					timeout: 10000, //超时时间设置为10秒；
+					success: function(data) {
+						console.log(data)
+					},
+					error: function(xhr, type, errorThrown) {
+						console.log("error")
+					}
+				});
+			}
+			
+			function f2(){
+				document.getElementById('messageWindows').style.display = "none"
 			}
 		</script>
 		<style type="text/css">
-			.infoList li{
+			.infoList li {
 				height: 80px;
 				line-height: 60px;
 				/* background-color: #007AFF; */
 			}
 		</style>
-		<div class="mui-content">
+		<div class="mui-content" style="background-color: white;">
+
+			<div id="messageWindows"
+				style="display: none; box-shadow: 0 4px 4px #888888;position: fixed;background-color: white; top: 35%; left: calc(50% - 165px); width: 330px;height: 200px; z-index: 55; border-radius: 14px;">
+
+				<div id="" class="" style="text-align: center; margin-top: 20px;height: 40px;">
+					设置新密码
+				</div>
+				<input id="newPassword" type="text" placeholder="请输入新密码" style="width: 90%; margin-left: 5%;" />
+				<button style="position: relative; left: calc(50% - 90px);top: 35px;" onclick="f2()">取消</button>
+				<button style="position: relative; left: calc(50% - 20px);top: 35px;" onclick="f1()">确定</button>
+			</div>
+
 			<!-- 搜索框 -->
-			<div class="mui-input-row mui-search" style="width: 96%; position: relative; left: 2%;">
+			<div class="mui-input-row mui-search" style="margin-top: 0px; margin-bottom: -15px; ">
 				<input id="searchInput" type="search" class="mui-input-clear" onkeyup="enterSearch(event)" />
 				<span class="mui-icon mui-icon-clear mui-hidden"></span>
 				<span class="mui-placeholder">
@@ -101,8 +149,18 @@
 						<div style="float: left;">
 							用户名：
 						</div>
-						<span id="username" class="mui-navigate-right" style="position: absolute; left: 230px;">
+						<span id="username" class="" style="position: absolute; left: 230px;">
 							null
+						</span>
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a>
+						<div style="float: left;">
+							密码
+						</div>
+						<span onclick="setPassword()" id="username" class="" style="position: absolute; left: 230px;">
+							设置新密码
 						</span>
 					</a>
 				</li>
@@ -111,7 +169,7 @@
 						<div style="float: left;">
 							学号：
 						</div>
-						<span id="sno" class="mui-navigate-right" style="position: absolute; left: 230px;">
+						<span id="sno" class="" style="position: absolute; left: 230px;">
 							null
 						</span>
 					</a>
@@ -122,7 +180,7 @@
 						<div style="float: left;">
 							姓名：
 						</div>
-						<span id="name" class="mui-navigate-right" style="position: absolute; left: 230px;">
+						<span id="name" class="" style="position: absolute; left: 230px;">
 							null
 						</span>
 					</a>
@@ -132,7 +190,7 @@
 						<div style="float: left;">
 							手机号：
 						</div>
-						<span id="phone" class="mui-navigate-right" style="position: absolute; left: 230px;">
+						<span id="phone" class="" style="position: absolute; left: 230px;">
 							null
 						</span>
 					</a>
@@ -140,9 +198,9 @@
 				<li class="mui-table-view-cell">
 					<a>
 						<div style="float: left;">
-							近一月消费：
+							上月消费：
 						</div>
-						<span id="oneMonth" class="mui-navigate-right" style="position: absolute; left: 230px;">
+						<span id="oneMonth" class="" style="position: absolute; left: 230px;">
 							null
 						</span>
 					</a>
@@ -152,7 +210,7 @@
 						<div style="float: left;">
 							累计消费：
 						</div>
-						<span id="allMonth" class="mui-navigate-right" style="position: absolute; left: 230px;">
+						<span id="allMonth" class="" style="position: absolute; left: 230px;">
 							null
 						</span>
 					</a>
@@ -162,7 +220,7 @@
 						<div style="float: left;">
 							订单查询
 						</div>
-						<span id="allMonth" class="mui-navigate-right" style="margin-left: 130px; color: gray;">
+						<span id="allMonth" class="" style="margin-left: 130px; color: gray;">
 							点击查询
 						</span>
 					</a>

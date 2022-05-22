@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<script src="../js/mui.min.js"></script>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			mui.init()
+			document.addEventListener('plusready', function(e) {
+			
+				// alert("aqwww")
+				setInterval(
+					function(){
+						getMessageData()
+					},500
+				)
+			
+			}, false)
+			
+			function getMessageData() {
+				let url = 'http://192.168.1.101:8080'
+				let api = '/getMessage'
+				
+				mui.ajax(url + api, {
+					data: {
+						'username': 'wmxkb'
+					},
+					dataType: 'json', //服务器返回json格式数据
+					type: 'post', //HTTP请求类型
+					timeout: 10000, //超时时间设置为10秒；
+					success: function(data) {
+						// let ndata = eval( '(' + data + ')')
+						// console.log("232323" + data[1].messageText)
+						let ul = document.getElementsByClassName('flag')[0]
+						while(ul.hasChildNodes()) //当div下还存在子节点时 循环继续  
+						    {
+						        ul.removeChild(ul.firstChild);
+						    }
+						for (let i = 0; i < data.length; i++) {
+							let li = document.createElement("li")
+							// li.style.border = "8px solid #F5F5F5"
+							// li.style.borderRadius = "30px"
+							li.className = 'mui-table-view-cell bcolor_g'
+							if (data[i].isUser == 1) {
+								li.innerHTML =
+									'<div id="" style="float: left;">' +
+									'用户:' +
+									'</div>' +
+									'<div class="" style="float: left; position: relative; left: 45px;">' +
+									data[i].messageText +
+									'</div>'
+							} else {
+								li.innerHTML =
+									'<div id="" style="float: left;">' +
+									'管理员:' +
+									'</div>' +
+									'<div class="" style="float: left; position: relative; left: 28px;">' +
+									data[i].messageText +
+									'</div>'
+							}
+			
+							ul.appendChild(li)
+						}
+			
+			
+					},
+					error: function(xhr, type, errorThrown) {
+						console.log("error222")
+					}
+				});
+			}
+			
+			function addMessage() {
+			
+				let message = document.getElementById('message').value
+				let url = 'http://192.168.1.101:8080'
+				let api = '/addMessage'
+				// alert("3444")
+				mui.ajax(url + api, {
+					data: {
+						'username': 'wmxkb',
+						'isUser': 0,
+						'isAdmin': 1,
+						'messageText': message
+					},
+					dataType: 'json', //服务器返回json格式数据
+					type: 'post', //HTTP请求类型
+					timeout: 10000, //超时时间设置为10秒；
+					success: function(data) {
+						console.log("插入了" + data + '行')
+					},
+					error: function(xhr, type, errorThrown) {
+						console.log("errorerror")
+					}
+				});
+				document.getElementById('message').value = ' '
+				// alert("3444")
+			}
+		</script>
+		<!-- 标题 -->
+		<!-- mui-bar-nav 暂时不需要阴影-->
+		<header class="mui-bar " style="background-color: white; box-shadow: 0 0 0 0 rgba(0,0,0,0);">
+			<a id='back' class="mui-icon mui-icon-left-nav mui-pull-left mui-action-back"></a>
+			<h1 class="mui-title">用户留言</h1>
+		</header>
+
+		<div class="mui-content" style="background-color: white; position: absolute; top: 5%; width: 100%; height: 725px;">
+			<ul class="mui-table-view flag">
+				<li class="mui-table-view-cell bcolor_g">
+					<div id="" style="float: left;">
+						用户:
+					</div>
+					<div class="" style="float: left; position: relative; left: 45px;">
+						请问大概什么时候补货？
+					</div>
+				</li>
+				<li class="mui-table-view-cell bcolor_g">
+					<div id="" style="float: left;">
+						管理员：
+					</div>
+					<div class="" style="float: left; position: relative; left: 20px;">
+						稍等1-2小时。
+					</div>
+				</li>
+			</ul>
+			<textarea id="message" placeholder="输入留言内容" rows="" cols=""
+				style="border-radius: 10px; width: 370px; margin-left: 10px; position: fixed; top: 600px;"></textarea>
+			<button onclick="addMessage()"
+				style="border-radius: 5px; width: 50px; margin-left: 175px; position: fixed; top: 685px;">回复</button>
+		</div>
+	</body>
+
+</html>

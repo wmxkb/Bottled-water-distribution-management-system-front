@@ -1,5 +1,9 @@
 document.addEventListener('plusready', function(e) {
-
+		mui(".mui-content").on('tap', '.boxStyle', function(){
+			let addWaterBox = document.getElementById('addWaterBox');
+			addWaterBox.style.display = "block";
+			
+		})
 
 	autoChange() //初始化实例后，首次设置数据
 	autoChange2()
@@ -29,6 +33,7 @@ document.addEventListener('plusready', function(e) {
 
 
 	}, false)
+
 
 
 
@@ -67,7 +72,7 @@ function autoChange() {
 		type: 'post', //HTTP请求类型
 		timeout: 10000, //超时时间设置为10秒；
 		success: function(commodityCount) {
-			console.log(commodityCount)
+			// console.log(commodityCount)
 			// let testShowData = document.getElementById('testShowData')
 			// for (let i = 0; i < data.length; i++) {
 			// 	testShowData.innerHTML += data[i].floor
@@ -165,7 +170,7 @@ function autoChange2() {
 		type: 'post', //HTTP请求类型
 		timeout: 10000, //超时时间设置为10秒；
 		success: function(commodityCount) {
-			console.log(commodityCount)
+			// console.log(commodityCount)
 			let blocks = document.getElementsByClassName('boxStyle')
 			for(let i = 0; i < blocks.length; i++){
 				blocks[i].children[0].innerHTML = 'ld-' + (i + 1).toString() + ' '+ commodityCount[i].toString() + '/96'

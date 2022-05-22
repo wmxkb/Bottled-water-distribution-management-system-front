@@ -18,6 +18,8 @@ document.addEventListener('plusready', function(e){
 		let username = document.getElementById("username").value;
 		let password = document.getElementById("password").value;
 		let userid = document.getElementById("userid").value;
+		let name = document.getElementById("name").value;
+		let phone = document.getElementById("phone").value;
 		
 		// 目标url
 		let url = "http://192.168.1.101:8080" + "/register";
@@ -29,6 +31,8 @@ document.addEventListener('plusready', function(e){
 				'username':username,
 				'password':password,
 				'userid':userid,
+				'name':name,
+				'phone':phone
 			 }, 
 			'default',
 			function success(data){
@@ -36,7 +40,7 @@ document.addEventListener('plusready', function(e){
 					alert("注册成功");
 					changeText('register', 'index.html', "注册成功");
 					
-					// plus.webview.currentWebview().hide();
+					plus.webview.currentWebview().hide();
 				}else
 					alert("输入不符合规范");
 			},

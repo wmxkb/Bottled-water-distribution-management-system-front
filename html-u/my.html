@@ -6,13 +6,17 @@
 		<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
 		<link rel="stylesheet" type="text/css" href="../css/mui.css" />
 		<link href="../css/my.css" rel="stylesheet" type="text/css" />
-		<script src="../js/mui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/mine.js"></script>
 		<script src="../js/my.js"></script>
 		<title></title>
 	</head>
 	<body class="content">
-		
+		<script>
+			function test1(){
+				alert("暂未开发")
+			}
+		</script>
 		
 		<div class="myProfileBox">
 			
@@ -20,15 +24,15 @@
 				<div class="myProfilePicture">
 					<img src="../img/touxiang.png" style="border-radius: 30px;" />
 				</div>
-				<div class="myProfileName">
-					&nbsp;&nbsp; 昵称
+				<div id="username" class="myProfileName">
+					&nbsp;&nbsp; 测试1
 				</div>
 				<div class="myProfilePhone">
 					<div class="iconfont icon-dianhua">
 						
 					</div>
-					<div class="phoneNumber">
-						15960080260
+					<div id="phone" class="phoneNumber">
+						17835149694
 					</div>
 				</div>
 			</div>
@@ -36,10 +40,10 @@
 			<div class="myProfilePart2">
 				<div class="p">
 					<div id="" class="ticketCount" style="left: 2%;">
-						0
+						2
 					</div>
 					<div class="ticket" style="left: 2%;">
-						电子票
+						赠送电子票
 					</div>
 				</div>
 				<div style="width: 1px; height: 20px; background-color: #00A5E0; position: absolute; top: 35px; left: 26%"></div>
@@ -57,21 +61,21 @@
 				<!-- 3142567898786543245687987865432246789 -->
 				
 				<div class="p">
-					<div id="" class="ticketCount" style="left: 50%;">
-						2
+					<div id="orderCount" class="ticketCount" style="left: 50%;">
+						13
 					</div>
 					<div class="ticket" style="left: 50%;">
-						xxx
+						下单总数
 					</div>
 				</div>
 				<div style="width: 1px; height: 20px; background-color: #00A5E0; position: absolute; top: 35px; left: 74%"></div>
 				
 				<div class="p">
-					<div id="" class="ticketCount" style="left: 74%;">
-						3
+					<div id="ticketCount" class="ticketCount" style="left: 74%;">
+						2
 					</div>
 					<div class="ticket" style="left: 74%;">
-						xxx
+						购物车
 					</div>
 				</div>
 				
@@ -92,7 +96,7 @@
 			</li>
 			<li class="mui-table-view-cell myFunctionLi">
 				<div class="iconfont icon-lianxiwomen myFunctionFonts" style="color: #f9637d;"></div>
-				<a  class="mui-navigate-right aTextPosition">
+				<a  class="mui-navigate-right aTextPosition" onclick="test1()">
 					联系我们
 				</a>
 			</li>
@@ -101,6 +105,9 @@
 				<a  class="mui-navigate-right aTextPosition">
 					营业时间
 				</a>
+				<div style="float: right;">
+					08:00—20:00
+				</div>
 			</li>
 			<li id="setting" class="mui-table-view-cell myFunctionLi">
 				<div class="iconfont icon-shezhi myFunctionFonts" style="color: #535353;" ></div>

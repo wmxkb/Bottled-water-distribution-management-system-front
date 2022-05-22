@@ -133,6 +133,7 @@ document.addEventListener('plusready', function(e) {
 				'default',
 				function success(data) {
 					if(data == 1){
+						plus.storage.setItem("userid", username.value)
 						plus.webview.open('html-a/tab_nav.html');
 						plus.navigator.setStatusBarBackground("#FFFFFF");
 					}else{
@@ -152,9 +153,9 @@ document.addEventListener('plusready', function(e) {
 	// 获取register a标签对象
 	register = document.getElementById("register");
 	// 监听register a标签tap事件
-	addTaplistener(register, function(e) {
-		changeView('register.html');
-		// closeWebview();
-	});
+	// addTaplistener(register, function(e) {
+	// 	changeView('register.html');
+	// 	// closeWebview();
+	// });
 
 }, false);

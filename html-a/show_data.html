@@ -12,9 +12,88 @@
 		<title></title>
 	</head>
 	<body>
+		<script type="text/javascript">
+			function f1(){
+				document.getElementById('messageWindows').style.display="none"
+			}
+			
+			function waterConfirm(){
+				let add1 =  document.getElementById('add1')
+				let add2 =  document.getElementById('add2')
+				let argu1 = add1.options[add1.selectedIndex].value
+				let argu2 = add2.options[add2.selectedIndex].value
+				
+				let url = 'http://192.168.1.101:8080'
+				let api = '/addWater'
+				mui.ajax(url + api,{
+					data:{
+						'location':argu1,
+						'floor':argu2
+					},
+					dataType:'json',//服务器返回json格式数据
+					type:'post',//HTTP请求类型
+					timeout:10000,//超时时间设置为10秒；
+					success:function(data){
+						console.log(data)
+					},
+					error:function(xhr,type,errorThrown){
+						
+					}
+				});
+				
+				document.getElementById('addWaterBox').style.display="none"
+				
+			}
+			function cancle(){
+				document.getElementById('addWaterBox').style.display="none"
+			}
+			
+		</script>
 		<div class="mui-content">
 			<!-- 233
 			<h1>test</h1> -->
+			<div id="messageWindows" style="box-shadow: 0 4px 4px #888888;position: fixed;background-color: white; top: 35%; left: calc(50% - 165px); width: 330px;height: 200px; z-index: 55; border-radius: 14px;">
+				<div id="" class="" style="margin-top: 20px; margin-left: 15px;height: 40px;">
+					建议优先派送 令德6 令德12 令德9
+				</div>
+				<div id="" class="" style="margin-top: 5px; margin-left: 15px;height: 40px;">
+					派送时间段 12:00-13:00 17:00-18:00
+				</div>
+				
+				<button style="position: relative; left: calc(50% - 26px);top: 35px;" onclick="f1()">确定</button>
+			</div>
+			
+			<!-- 补水 -->
+			<div id="addWaterBox" style="display: none; box-shadow: 0 4px 4px #888888;position: fixed;background-color: white; top: 35%; left: calc(50% - 165px); width: 330px;height: 200px; z-index: 55; border-radius: 14px;">
+				<select id="add1" >
+					<option value="ld-1">令德 1</option>
+					<option value="ld-2">令德 2</option>
+					<option value="ld-3">令德 3</option>
+					<option value="ld-4">令德 4</option>
+					<option value="ld-5">令德 5</option>
+					<option value="ld-6">令德 6</option>
+					<option value="ld-7">令德 7</option>
+					<option value="ld-8">令德 8</option>
+					<option value="ld-9">令德 9</option>
+					<option value="ld-10">令德10</option>
+					<option value="ld-11">令德11</option>
+					<option value="ld-12" selected>令德12</option>
+				</select>
+				<div style="position: fixed; top: 36.6%; left: 60%; font-size: 14px;"> 月销量：152 桶</div>
+				
+				<select id="add2">
+					<option value="1">1楼</option>
+					<option value="2">2楼</option>
+					<option value="3">3楼</option>
+					<option value="4">4楼</option>
+					<option value="5">5楼</option>
+					<option value="6">6楼</option>
+					<option value="0" selected>全部楼层</option>
+				</select>
+				<button style="position: relative; left: calc(50% - 90px);top: 35px;" onclick="cancle()">取消</button>
+				<button style="position: relative; left: calc(50% - 20px);top: 35px;" onclick="waterConfirm()">补充</button>
+				<!-- <button style="position: relative; left: calc(50% - 26px);top: 35px;" onclick="waterConfirm()">确定</button> -->
+			</div>
 
 			<!-- 地点选择 -->
 			<select id="sl" onchange="selectLocation()" class="selectfont">
@@ -42,7 +121,7 @@
 			<div style="position: absolute;top: 48%; height: 0px; width: 100%; border: 0.5px solid #000000;"></div>
 			
 			<!-- 绘制方框 -->
-			<div style="position: absolute; top: 48.5%; width: 100%; height: 51.5%;">
+			<div class="" style="position: absolute; top: 48.5%; width: 100%; height: 51.5%;">
 				<div style="width: 100%; height: 15%; float: left; text-align: center; line-height: 45px; font-size: 15px; font-family: 'Arial';"> 各楼水量总览（瓶）</div>
 				<div class="boxStyle">
 					<div>ld-1:50/96</div>

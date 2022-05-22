@@ -47,8 +47,14 @@ document.addEventListener('plusready', function(){
 	// plus.webview.currentWebview()
 	);
 	
+	
+	
+	
 	// 默认显示home页
 	changeView('home.html');
+	
+	
+	
 	
 	let home = document.getElementById('home');
 	// home.style.color = "#007aff";
@@ -116,6 +122,22 @@ document.addEventListener('plusready', function(){
 		
 	});
 	
-	
+	// // 其余需要与服务器交互得到的信息并存储
+	// let url = 'http://192.168.1.101:8080'
+	// let api = '/searchUser'
+	// mui.ajax(url + api,{
+	// 	data:{
+	// 		'username': plus.storage.getItem('userid')
+	// 	},
+	// 	dataType:'json',//服务器返回json格式数据
+	// 	type:'post',//HTTP请求类型
+	// 	timeout:10000,//超时时间设置为10秒；
+	// 	success:function(data){
+	// 		plus.storage.setItem('sno', data.sno)
+	// 	},
+	// 	error:function(xhr,type,errorThrown){
+	// 		console.log("个人信息数据存储出错")
+	// 	}
+	// });
 	
 },false);

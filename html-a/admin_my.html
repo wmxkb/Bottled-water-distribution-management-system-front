@@ -13,7 +13,92 @@
 		<link rel="stylesheet" type="text/css" href="../css/admin_my.css" />
 	</head>
 	<body>
+
+		<script>
+			document.addEventListener('plusready', function(e) {
+				document.getElementById('userid').innerHTML = plus.storage.getItem('userid')
+			}, false)
+
+			function fixPhone() {
+				document.getElementById("form").style.display="block"; 
+			}
+			
+			function save(){
+				document.getElementById("form").style.display="none"
+				if(document.getElementById("form").children[0].value != "")
+					document.getElementById("phoneNumber").innerHTML = "联系电话：" + document.getElementById("form").children[0].value
+			}
+			
+			function dissave(){
+				document.getElementById("form").style.display="none"
+			}
+			
+			
+			// 未实现
+			function test1(){
+				alert("暂未实现")
+			}
+			
+			function test2(){
+				// alert("暂未实现")
+				mui.openWindow('adminMessage.html','id',{})
+			}
+			
+			function test3(){
+				let messageWindows = document.getElementById('messageWindows').style.display = 'block'
+			}
+			
+			function test4(){
+				let messageWindows = document.getElementById('messageWindows').style.display = 'none'
+			}
+			
+			function test5(){
+				let messageWindows = document.getElementById('messageWindows').style.display = 'none'
+				let newAdmin = document.getElementById('newAdmin').value
+				let newPassword = document.getElementById('newPassword').value
+				let phoneNumber = document.getElementById('phoneNumber').value
+				let url = 'http://192.168.1.101:8080'
+				let api = '/addAdmin'
+				mui.ajax(url + api,{
+					data:{
+						'userid':newAdmin,
+						'keyword':newPassword,
+						'phoneNumber':phoneNumber
+					},
+					dataType:'json',//服务器返回json格式数据
+					type:'post',//HTTP请求类型
+					timeout:10000,//超时时间设置为10秒；
+					success:function(data){
+						console.log(data)
+					},
+					error:function(xhr,type,errorThrown){
+						
+					}
+				});
+			}
+		</script>
+
 		<div class="mui-content">
+			
+			<div id="messageWindows" style="display: none; box-shadow: 0 4px 4px #888888;position: fixed;background-color: white; top: 30%; left: calc(50% - 165px); width: 330px;height: 300px; z-index: 55; border-radius: 14px;">
+				<div id="" class="" style="text-align: center; margin-top: 20px;height: 40px;">
+					新建账户、密码
+				</div>
+				<input id="newAdmin" type="text" placeholder="请输入新账户" style="width: 90%; margin-left: 5%;" />
+				<input id="newPassword" type="text" placeholder="请输入新密码" style="width: 90%; margin-left: 5%;" />
+				<input id="phoneNumber" type="text" placeholder="请输入手机号" style="width: 90%; margin-left: 5%;" />
+				<button style="position: relative; left: calc(50% - 90px);top: 10px;" onclick="test4()">取消</button>
+				<button style="position: relative; left: calc(50% - 20px);top: 10px;" onclick="test5()">确定</button>
+			</div>
+			
+			<!-- <input id="phone" style="width: 100px;z-index: 51;" /> -->
+			
+			<div id="form" style="display: none; border-radius: 10px; box-shadow: 0 4px 4px #888888; background-color: white; border: solid 1px #000000;  width: 300px; height: 200px; position: absolute; top: 150px; left: calc(50% - 150px); z-index: 50;">
+				<input type="tel" name="phone" id="phone" value="" placeholder="输入新联系方式" style="width: 150px; position: relative; left: calc(50% - 75px); top: 50px;" />
+				
+				<button onclick="dissave()" style="margin-top: 120px; margin-left: -80px;">取消</button>
+				<button onclick="save()" style="margin-top: 120px; margin-left: 36px;">保存</button>
+			</div>
 			<div class="myProfileBox">
 
 				<div class="myProfilePart1">
@@ -24,35 +109,38 @@
 
 				</div>
 
-
-
-
+				<div id="userid" style="position: absolute; top: 115px; width: 100%; text-align: center;">
+					10001
+				</div>
 
 			</div>
 
 
+
+
 			<ul class="mui-table-view myFunction">
-				<li id="address" class="mui-table-view-cell myFunctionLi">
+
+				<li class="mui-table-view-cell myFunctionLi">
 					<!-- <div class="iconfont icon-shouhuodizhi myFunctionFonts" style="color: #706cf6;"></div> -->
-					<a class="mui-navigate-right ">
+					<a  id="phoneNumber" onclick="fixPhone()" class="mui-navigate-right ">
 						联系电话：15951465189
 					</a>
 				</li>
 				<li class="mui-table-view-cell myFunctionLi">
 					<!-- <div class="iconfont icon-yingyeshijian myFunctionFonts" style="color: #e38313;"></div> -->
-					<a class="mui-navigate-right ">
+					<a class="mui-navigate-right " onclick="test1()">
 						工作状态：在线
 					</a>
 				</li>
 				<li class="mui-table-view-cell myFunctionLi">
 					<!-- <div class="iconfont icon-lianxiwomen myFunctionFonts" style="color: #f9637d;"></div> -->
-					<a class="mui-navigate-right ">
+					<a class="mui-navigate-right " onclick="test3()">
 						管理员账户管理
 					</a>
 				</li>
 				<li class="mui-table-view-cell myFunctionLi">
 					<!-- <div class="iconfont icon-yingyeshijian myFunctionFonts" style="color: #e38313;"></div> -->
-					<a class="mui-navigate-right ">
+					<a class="mui-navigate-right " onclick="test2()">
 						用户留言
 					</a>
 				</li>

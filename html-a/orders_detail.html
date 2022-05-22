@@ -9,23 +9,72 @@
 		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
 	</head>
 	<body>
+		<script>
+			document.addEventListener('plusready', function(e) {
+				let w = plus.webview.currentWebview();
+				// alert(w.orderNumber)
+				let url = 'http://192.168.1.101:8080'
+				let api = '/getOrderItemByNumber'
+				mui.ajax(url + api, {
+					data: {
+						'orderNumber': w.orderNumber
+					},
+					dataType: 'json', //服务器返回json格式数据
+					type: 'post', //HTTP请求类型
+					timeout: 10000, //超时时间设置为10秒；
+					success: function(data) {
+						// console.log(w.orderTime)
+						let orderTime = document.getElementById('orderTime')
+						orderTime.innerHTML = "购买时间：" + w.orderTime
+						// let d0 = eval('(' + data + ')');
+						
+						// console.log(data.length)
+						// console.log(eval('(' + (data[0]) + ')').orderGoods)
+						for (let i = 0; i < data.length; i++) {
+							let fatherd = document.getElementsByClassName('mui-content')[0]
+							let d = document.createElement("div")
+							d.style = 'margin-left: 30px; font-size: 20px;'
+							// let details = document.getElementById('details')
+							if(data[i].orderGoods == '5L小桶水'){
+								d.innerHTML = data[i].orderGoods + "&nbsp&nbsp&nbsp&nbsp&nbsp" + data[i].orderCount + '桶&nbsp&nbsp&nbsp ' + '单价￥' + data[i].commodityPrice + "<hr />"
+							}else{
+								d.innerHTML = data[i].orderGoods + ' &nbsp&nbsp' + data[i].orderCount + '桶&nbsp&nbsp&nbsp ' + '单价￥' + data[i].commodityPrice+ "<hr />"
+							}
+							
+							fatherd.appendChild(d)
+						}
+						
+						// end
+						let fatherd = document.getElementsByClassName('mui-content')[0]
+						let dd = document.createElement("div")
+						dd.style = 'margin-left: 30px; font-size: 20px;'
+						dd.innerHTML = '订单总价值：￥' + w.orderPrice
+						// console.log(w.orderPrice)
+						fatherd.appendChild(dd)
+					},
+					error: function(xhr, type, errorThrown) {
+
+					}
+				});
+			}, false)
+		</script>
 		<header class="mui-bar " style="background-color: white; box-shadow: 0 0 0 0 rgba(0,0,0,0);">
 			<a id='back' class="mui-icon mui-icon-left-nav mui-pull-left mui-action-back"></a>
 			<h1 class="mui-title">订单详情</h1>
 		</header>
 		<div class="mui-content" style="position: absolute;top: 50px;">
-			<div style="margin-left: 30px;">
-				购买时间：2022-4-30 01:09:27 
+			<div id="orderTime" style="margin-left: 30px;">
+				购买时间：2022-4-30 01:09:27
 			</div>
-			<div style="margin-left: 30px; font-size: 20px;">
+			<!-- <div id="details" style="margin-left: 30px; font-size: 20px;">
 				令德12 1楼 5L小桶水 2桶 单价￥6.8
 			</div>
 			<div style="margin-left: 30px; font-size: 20px;">
 				令德12 2楼 5L小桶水 1桶 单价￥6.8
-			</div>
-			<div style="margin-left: 30px; font-size: 20px;">
+			</div> -->
+			<!-- <div style="margin-left: 30px; font-size: 20px;">
 				订单总价值：￥20.4
-			</div>
+			</div> -->
 		</div>
 	</body>
 </html>

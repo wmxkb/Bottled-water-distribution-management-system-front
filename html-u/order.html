@@ -3,21 +3,115 @@
 	<head>
 		<meta charset="utf-8">
 		<!-- ,viewport-fit=cover -->
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link rel="stylesheet" type="text/css" href="../css/mui.css" />
 		<link rel="stylesheet" type="text/css" href="../css/order.css" />
-		<script type="text/javascript" src="../js/mui.js"></script>
+		<script type="text/javascript" src="../js/mui.min.js"></script>
 		<script src="../js/mine.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" src="../js/order.js"></script>
 		<title></title>
-		
+
 	</head>
-	<body class="bcolor_w" >
-		
-		
-		
-		
-		
+	<body class="bcolor_w">
+
+		<script>
+			document.addEventListener('plusready', function(e) {
+
+				// alert("aqwww")
+				setInterval(
+					function() {
+						getMessageData()
+					}, 500
+				)
+
+			}, false)
+
+
+			function getMessageData() {
+				let url = 'http://192.168.1.101:8080'
+				let api = '/getMessage'
+				// bug 暂未解决
+				if (plus.storage.getItem('userid') != '10001')
+					mui.ajax(url + api, {
+						data: {
+							'username': plus.storage.getItem('userid')
+						},
+						dataType: 'json', //服务器返回json格式数据
+						type: 'post', //HTTP请求类型
+						timeout: 10000, //超时时间设置为10秒；
+						success: function(data) {
+							// let ndata = eval( '(' + data + ')')
+							// console.log("232323" + data[1].messageText)
+							let ul = document.getElementsByClassName('flag')[0]
+							while (ul.hasChildNodes()) //当div下还存在子节点时 循环继续  
+							{
+								ul.removeChild(ul.firstChild);
+							}
+							for (let i = 0; i < data.length; i++) {
+								let li = document.createElement("li")
+								// li.style.border = "8px solid #F5F5F5"
+								// li.style.borderRadius = "30px"
+								li.className = 'mui-table-view-cell bcolor_g'
+								if (data[i].isUser == 1) {
+									li.innerHTML =
+										'<div id="" style="float: left;">' +
+										'用户:' +
+										'</div>' +
+										'<div class="" style="float: left; position: relative; left: 45px;">' +
+										data[i].messageText +
+										'</div>'
+								} else {
+									li.innerHTML =
+										'<div id="" style="float: left;">' +
+										'管理员:' +
+										'</div>' +
+										'<div class="" style="float: left; position: relative; left: 31px;">' +
+										data[i].messageText +
+										'</div>'
+								}
+
+								ul.appendChild(li)
+							}
+
+
+						},
+						error: function(xhr, type, errorThrown) {
+							console.log("error222")
+						}
+					});
+			}
+
+			function addMessage() {
+
+				let message = document.getElementById('message').value
+				let url = 'http://192.168.1.101:8080'
+				let api = '/addMessage'
+				// alert("3444")
+				mui.ajax(url + api, {
+					data: {
+						'username': plus.storage.getItem("userid"),
+						'isUser': 1,
+						'isAdmin': 0,
+						'messageText': message
+					},
+					dataType: 'json', //服务器返回json格式数据
+					type: 'post', //HTTP请求类型
+					timeout: 10000, //超时时间设置为10秒；
+					success: function(data) {
+						console.log("插入了" + data + '行')
+					},
+					error: function(xhr, type, errorThrown) {
+						console.log("errorerror")
+					}
+				});
+				document.getElementById('message').value = ' '
+				// alert("3444")
+			}
+		</script>
+
+
+
 		<!-- 需要手动修改背景颜色 -->
 		<!-- <div class="mui-content mui-scroll-wrapper bcolor_g">
 			<div class="mui-scroll">
@@ -28,10 +122,12 @@
 			<div class="mui-slider">
 				<div class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted bcolor_w">
 					<a class="mui-control-item" href="#item1">商品订单</a>
-					<a class="mui-control-item" href="#item2">充值订单</a>
+					<a class="mui-control-item" href="#item2">留言</a>
 				</div>
-				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-6" style="background-color: white;">
-					<div style="position: absolute; left: 35%; width: 30%; height: 1px; border-style: solid ; border-width: 1.5px; border-color: #0960ff; ">
+				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-6"
+					style="background-color: white;">
+					<div
+						style="position: absolute; left: 35%; width: 30%; height: 1px; border-style: solid ; border-width: 1.5px; border-color: #0960ff; ">
 					</div>
 				</div>
 				<div class="mui-slider-group ">
@@ -75,30 +171,51 @@
 							<li class="mui-table-view-cell">第1个选项卡子项</li> -->
 						</ul>
 					</div>
-					<div id="item2" class="mui-slider-item mui-control-content bcolor_w">
-						<ul class="mui-table-view">
-							<li class="mui-table-view-cell">1</li>
-							<li class="mui-table-view-cell">2</li>
+					<div id="item2" class="mui-slider-item mui-control-content bcolor_g" style="height: 630px;">
+						<ul class="mui-table-view flag">
+							<!-- <li class="mui-table-view-cell bcolor_g">
+								<div id="" style="float: left;">
+									用户:
+								</div>
+								<div class="" style="float: left; position: relative; left: 45px;">
+									请问大概什么时候补货？
+								</div>
+							</li>
+							<li class="mui-table-view-cell bcolor_g">
+								<div id="" style="float: left;">
+									管理员：
+								</div>
+								<div class="" style="float: left; position: relative; left: 20px;">
+									稍等1-2小时。
+								</div>
+							</li> -->
+							<!-- <textarea placeholder="23333" rows="" cols=""></textarea> -->
 						</ul>
+						<textarea id="message" placeholder="输入留言内容" rows="" cols=""
+							style="border-radius: 10px; width: 370px; margin-left: 10px; position: fixed; top: 480px;"></textarea>
+						<button onclick="addMessage()"
+							style="border-radius: 5px; width: 50px; margin-left: 175px; position: fixed; top: 565px;">回复</button>
 					</div>
+
 				</div>
+
 			</div>
-			
+
 		</div>
-		
-		
-		
-		
+
+
+
+
 		<script type="text/javascript">
-		// mui.init();
+			// mui.init();
 			mui('.mui-scroll-wrapper').scroll({
 				deceleration: 0.0005
 			});
-			
+
 			// mui('.mui-scroll-wrapper').scroll({
 			// 	deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
 			// });
 		</script>
-		
+
 	</body>
 </html>

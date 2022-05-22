@@ -179,7 +179,7 @@ html{
 	
 	position: relative;
 	top: 25px;
-	left: calc(50% - 55px);
+	left: calc(50% - 60px);
 	/* float: left; */
 	
 	margin-left: 20px;
@@ -261,7 +261,7 @@ html{
 
 .myFunction{
 	position: absolute;
-	top: 130px;
+	top: 135px;
 	left: 5%;
 	width: 90%;
 	
